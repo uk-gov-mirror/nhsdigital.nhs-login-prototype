@@ -1,0 +1,30 @@
+{% extends '_layouts/_grids/_grid-2-1.html' %}
+{% block page_title %}View your hospital record {{serviceName}}{% endblock %}
+
+{% set params = "?serviceName=" + serviceName + "&hidehead=" + hidehead %}
+
+{% block content %}
+
+<div class="first-item">
+  <form>
+    <div class="form-group">
+      <fieldset class="">
+        <h1><legend>Find your registration details on Patient Access</legend></h1>
+        <p>Follow the steps below.</p>
+
+        <ol>
+          <!--<li>Go to <a href="https://patient.emisaccess.co.uk/account/login?ReturnUrl=%2F" target="_blank">Patient Access</a> and log in</li>-->
+          <li>You need to go to your GP surgery to get your registration details</li>
+        </ol>
+
+    </div>
+    <!--
+    <div class="form-group">
+      <a href="patient-online-linkage-key{{ params }}" class="button" id="continue">Continue</a>
+    </div>
+    -->
+
+  </form>
+</div>
+
+{% endblock %}

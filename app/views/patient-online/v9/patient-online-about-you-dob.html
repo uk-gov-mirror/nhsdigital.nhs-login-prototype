@@ -1,0 +1,48 @@
+{% extends '_layouts/_grids/_grid-2-1-hotjar.html' %}
+{% block page_title %}Access {{ serviceName }} - What is your NHS number?{% endblock %}
+
+{% set signedin = 'true' %}
+{% set params = "?service=" + service + "&serviceName=" + serviceName + "&emailAddress=" + emailAddress + "&mobileNum=" + mobileNum + "&hidehead=" + hidehead + "&poluser=" + poluser + "&system=" + system %}
+
+{% block content %}
+
+<div class="first-item">
+
+  <form>
+    <div class="form-group">
+
+      <p><a href="javascript:history.go(-1)" class="link-back">Back</a></p>
+
+      <h1><legend><!--<span class="heading-secondary">Connect to your GP </span>-->What's your date of birth?</legend></h1>
+
+      <div class="form-group">
+        <fieldset>
+          <span class="form-label__hint" style="margin-top: 10px;">For example, '31 8 1970'</span>
+          <div class="form-group -date" style="margin-top: 10px;">
+            <div class="form-date-field">
+              <label for="dob-day" style="margin-bottom: 5px; display: block;">Day</label>
+              <input type="number" id="dob-day" name="dob-day" pattern="[0-9]" value="" class="day" maxlength="2" min="1" max="31">
+            </div>
+            <div class="form-date-field">
+              <label for="dob-month" style="margin-bottom: 5px; display: block;">Month</label>
+              <input type="number" id="dob-month" name="dob-month" pattern="[0-9]" value="" class="month" maxlength="2" min="1" max="12">
+            </div>
+            <div class="form-date-field">
+              <label for="dob-year" style="margin-bottom: 5px; display: block;">Year</label>
+              <input type="number" id="dob-year" name="dob-year" pattern="[0-9]" value="" class="year" maxlength="4" min="1900" max="2018">
+            </div>
+          </div>
+        </fieldset>
+      </div>
+
+    </div>
+
+
+    <div class="form-group">
+      <a class="button" href="patient-online-linkage-key-loading{{ params }}">Submit details</a>
+    </div>
+  </form>
+
+</div>
+
+{% endblock %}

@@ -1,0 +1,25 @@
+{% extends '_layouts/_grids/_grid-2-1-hotjar.html' %}
+{% block page_title %}Access {{ serviceName }} - Check your text messages{% endblock %}
+
+{% set signedin = 'true' %}
+{% set params = "?service=" + service + "&serviceName=" + serviceName + "&emailAddress=" + emailAddress + "&mobileNum=" + mobileNum + "&idType=" + idType + "&hidehead=" + hidehead + "&devMode=" + devMode + "&returnUrl=" + returnUrl + "&uplift=" + uplift %}
+
+{% block content %}
+
+<div class="first-item">
+
+  <h1>The link did not work</h1>
+
+  <p>This could be because the link expired. You have 10 minutes to use the link.</p>
+
+  <p>Please try again.</p>
+
+  <div class="form-group">
+    <a class="button" href="service-access-switchtomobile-waiting{{ params }}">Send another link</a>
+  </div>
+
+  <p class="small">Reference: CID8010</p>
+
+</div>
+
+{% endblock %}

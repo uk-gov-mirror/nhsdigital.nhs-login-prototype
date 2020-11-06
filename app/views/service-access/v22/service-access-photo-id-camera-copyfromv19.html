@@ -1,0 +1,773 @@
+{% extends '_layouts/_grids/_grid-2-1-hotjar.html' %}
+{% block page_title %}Access {{ serviceName }} - Take a photo of your {{ idType }}{% endblock %}
+
+{% set signedin = 'true' %}
+{% set params = "?service=" + service + "&serviceName=" + serviceName + "&emailAddress=" + emailAddress + "&mobileNum=" + mobileNum + "&idType=" + idType + "&lsId=" + lsId + "&lsAccess=" + lsAccess + "&lsStudy=" + lsStudy + "&formerror=" + formerror + "&hidehead=" + hidehead + "&devMode=" + devMode + "&returnUrl=" + returnUrl + "&genericButton=" + genericButton + "&upload=" + upload + "&manual=" + manual %}
+
+{% block content %}
+
+
+<div class="first-item">
+
+    <section class="loading-container" id="scan-id-0" style="display:none">
+
+        <h1 id="spinner-heading" style="padding-bottom: 0; display:none;">Uploading your photo</h1>
+
+        <div class="bar_container">
+            <div id="main_container">
+                <div id="pbar" class="progress-spinner" data-percent="0">
+                    <img src="/images/loader-spinner.svg" width="200px" height="200px" id="spinner" class=""/>
+                    <div class="ppc-loading">
+                        <div class="pcc-percents-wrapper">
+                            <span id="spinner-status">Loading</span><span aria-hidden="true">...</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </section>
+
+
+    <section class="" id="scan-id-1" style="display:block; margin-top: 0;">
+
+        {% if front === 'done' %}
+
+            {% if upload === 'file' %}
+            <p><a href="service-access-photo-id-camera{{ params }}" class="link-back"><i style="font-weight: normal;font-style: normal;">Back to:</i> Upload a photo of the front of your I.D.</a></p>
+            {% else %}
+            <p><a href="service-access-photo-id-camera{{ params }}" class="link-back"><i style="font-weight: normal;font-style: normal;">Back to:</i> Take a photo of the front of your I.D.</a></p>
+            {% endif %}
+
+        {% else %}
+
+            {% if mobileOs === 'Apple Mac' or mobileOs === 'Microsoft Windows' %}
+                <p><a href="service-access-photo-id-type{{ params }}" class="link-back"><i style="font-weight: normal;font-style: normal;">Back to:</i> Choose the photo I.D. you want to use</a></p>
+            {% else %}
+                {% if idType === 'passport' or idType === 'UK driving licence' %}
+                    <p><a href="service-access-photo-id-instructions{{ params }}" class="link-back"><i style="font-weight: normal;font-style: normal;">Back to:</i> Choose how to send a photo of your I.D.</a></p>
+                {% else %}
+                    <p><a href="service-access-photo-id-instructions{{ params }}" class="link-back"><i style="font-weight: normal;font-style: normal;">Back to:</i> Choose how to send the photos of your I.D.</a></p>
+                {% endif %}
+            {% endif %}
+
+        {% endif %}
+
+        <form>
+            <fieldset class="">
+                <legend for="radio-inline-group">
+                    <h1 style="padding-bottom: 0;">
+
+                    {% if idType === 'passport' or idType === 'UK driving licence' %}
+
+                        {% if upload === 'file' %}
+                            Upload a photo of your {{ idType }}
+                        {% else %}
+                            Take a photo of your {{ idType }}
+                        {% endif %}
+
+                    {% else %}
+
+                        {% if upload === 'file' %}
+                            Upload a photo of the {% if front === 'done' %}back{% else %}front{% endif %} of your {{ idType }}
+                        {% else %}
+                            Take a photo of the {% if front === 'done' %}back{% else %}front{% endif %} of your {{ idType }}
+                        {% endif %}
+
+                    {% endif %}
+
+                    </h1>
+                </legend>
+
+                {% if idType === 'passport' %}
+                <p>We need a clear photo of the page in your passport that has your name and face on it.</p>
+                {% else %}
+                <p>We need a clear photo of your {{ idType }}</p>
+                {% endif %}
+
+                {% if upload !== 'file' %}
+                <p>When you take your photo make sure:</p>
+                {% else %}
+                <p>Make sure:</p>
+                {% endif %}
+
+                <ul class="list list-bullet">
+
+                    {% if idType === 'passport' %}
+
+                        <li>your photo is of the whole page</li>
+                        <li>you can see all words, numbers and codes</li>
+                        <li>there is no reflection or shine from a bright light</li>
+                        <li>the text is not blurred</li>
+
+                    {% else %}
+
+                        <li>your photo includes all 4 corners</li>
+                        <li>you can see all words, numbers and codes </li>
+                        <li>there are no bright spots caused by reflection from a bright light</li>
+                        <li>the text is not blurred</li>
+
+                    {% endif %}
+
+                </ul>
+
+                <div class="form-group">
+
+                    {% if mobileOs === 'Apple Mac' or mobileOs === 'Microsoft Windows' %}
+                      {% set instruction = 'Choose a file' %}
+                    {% else %}
+                      {% if mobileOs === 'iPhone' or mobileOs === 'iPad' %}
+                        {% if upload === 'file' %}
+                            {% set instruction = 'Open Photo Library' %}
+                        {% else %}
+                            {% set instruction = 'Open camera' %}
+                        {% endif %}
+                      {% else %}
+                        {% set instruction = 'Open camera' %}
+                      {% endif %}
+                    {% endif %}
+
+                    <label for="photo-id-document-any" class="camera-button">{{ instruction }}
+                        <input type="file" id="photo-id-document-any" accept="image/*" {% if upload === 'file' %} {% else %}capture="environment" {% endif %} />
+                    </label>
+
+                </div>
+
+            </fieldset>
+
+        </form>
+
+        {% if devMode === 'true' %}
+        <div style="display: inline-block;background-color: #ffb81c;padding: 0.25em 0.5em;">
+            <small>OS version: {{ mobileOsV }}</small><br>
+            <small>OS type: {{ mobileOs }}</small><br>
+            <small>Side: {{ side }}</small><br>
+            <small>Front: {{ front }}</small><br>
+        </div>
+        {% endif %}
+
+    </section>
+
+    <section class="uploader-container" id="scan-id-3" style="display:none">
+
+        <h1 style="padding-bottom: 0;">
+            Uploading your photo
+        </h1>
+
+        <div class="bar_container">
+            <div id="main_container">
+                <div id="pbar" class="progress-pie-chart" data-percent="0">
+                    <div class="ppc-progress">
+                        <div class="ppc-progress-fill"></div>
+                    </div>
+                    <div class="ppc-percents">
+                        <div class="pcc-percents-wrapper">
+                            <span>%</span>
+                        </div>
+                    </div>
+                </div>
+
+                <progress style="display: none" id="progress_bar" value="0" max="100"></progress>
+            </div>
+        </div>
+
+    </section>
+
+ 
+    <section class="uploader-container" id="scan-id-3" style="display:none">
+
+        <h1 style="padding-bottom: 0;">
+            Saving your photo
+        </h1>
+
+        <div class="bar_container">
+            <div id="main_container">
+                <div id="pbar" class="progress-pie-chart" data-percent="0">
+                    <div class="ppc-progress">
+                        <div class="ppc-progress-fill"></div>
+                    </div>
+                    <div class="ppc-percents">
+                        <div class="pcc-percents-wrapper">
+                            <span>%</span>
+                        </div>
+                    </div>
+                </div>
+
+                <progress style="display: none" id="progress_bar" value="0" max="100"></progress>
+            </div>
+        </div>
+
+    </section>
+
+    <!-- Image is blurred - V2 screen 1 -->
+    <section class="preview-container" id="scan-id-12a" style="display:none">
+
+        <h1 style="padding-bottom: 0;">Your photo may be too blurry</h1>
+
+        <div class="reading-width">
+            <div id="scan-id-preview" style="padding-top: 16px;">
+                <img id="uploaded-id-2" src="#" alt="A preview of your photo of your I.D document" style="height:auto;"/>
+            </div>
+        </div>
+
+        <p>This can happen when you take your photo in a dark room, your camera lens is dirty, or your I.D. is not in focus.</p>
+        <p>Sometimes our checks detect blur by mistake. If you think the text is clear, you do not need to try again.</p>
+        <p>If your photo is too blurry, we may not be able to approve you.</p>
+
+        <h3>Choose one option</h3>
+
+        <div class="selection-button-radio" style="margin-top: 16px;">
+            <div class="multiple-choice" data-target="advice-9-yes" style="margin-bottom: 0;">
+                <input id="radio-inline-16" type="radio" name="radio-inline-group-9" value="retry">
+                <label for="radio-inline-16" class="block-label" style="position: static;">I will try again</label>
+            </div>
+        </div>
+        <div class="selection-button-radio" style="margin-top: 8px;">
+            <div class="multiple-choice" data-target="advice-9-no" style="margin-bottom: 0;">
+                <input id="radio-inline-17" type="radio" name="radio-inline-group-9" value="continue">
+                <label for="radio-inline-17"class="block-label" style="position: static;">I think the text is clear</label>
+            </div>
+        </div>
+        <div class="selection-button-radio" style="margin-top: 8px;">
+            <div class="multiple-choice" data-target="advice-9-no" style="margin-bottom: 0;">
+                <input id="radio-inline-18" type="radio" name="radio-inline-group-9" value="continue">
+                <label for="radio-inline-18"class="block-label" style="position: static;">It is hard for me to take a photo, or to check the photo I have taken</label>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <a class="button" href="service-access-photo-id-camera{{ params }}" id="">Continue</a>
+        </div>
+
+
+
+    </section>
+
+    <!-- Image is blurred - V2 screen - How to take a clearer photo -->
+    <section class="preview-container" id="scan-id-12b" style="display:none">
+
+        <p><a href="#" class="link-back">Back</a></p>
+
+        <h1 style="padding-bottom: 0;">How to take a clearer photo</h1>
+
+        <p>To take a clearer photo you should:</p>
+
+        <ul class="list list-bullet">
+            <li>take your photo in a light place (a bright room or outside) </li>
+            <li>clean the camera lens </li>
+            <li>focus on your I.D. (to focus, tap your screen before you take your photo)</li>
+        </ul>
+        
+        <h3>Do you want to try another photo of your passport</h3>
+
+        <div class="selection-button-radio" style="margin-top: 16px;">
+            <div class="multiple-choice" data-target="advice-9-yes" style="margin-bottom: 0;">
+                <input id="radio-inline-16" type="radio" name="radio-inline-group-9" value="retry">
+                <label for="radio-inline-16" class="block-label" style="position: static;">Yes - try again with my passport</label>
+            </div>
+        </div>
+        <div class="selection-button-radio" style="margin-top: 8px;">
+            <div class="multiple-choice" data-target="advice-9-no" style="margin-bottom: 0;">
+                <input id="radio-inline-17" type="radio" name="radio-inline-group-9" value="continue">
+                <label for="radio-inline-17"class="block-label" style="position: static;">No - try again with a different I.D.</label>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <a class="button" href="service-access-photo-id-camera{{ params }}" id="">Continue</a>
+        </div>
+
+
+
+    </section>
+
+    <!-- Image is blurred - V2 screen - Make sure your photo is clear before you send it -->
+    <section class="preview-container" id="scan-id-12c" style="display:none">
+
+        <p><a href="#" class="link-back">Back to: Your photo may be too blurry</a></p>
+
+        <h1 style="padding-bottom: 0;">Make sure your photo is clear before you send it</h1>
+
+        <div class="reading-width">
+            <div id="scan-id-preview" style="padding-top: 16px;">
+                <img id="uploaded-id-3" src="#" alt="A preview of your photo of your I.D document" style="height:auto;"/>
+            </div>
+        </div>
+
+        <p>Make sure you can read all the text in your photo, including any numbers and codes.</p>
+
+        <p>If your photo is too blurry, we may not be able to approve you.</p>
+
+        
+        <h3>Do you want to send this photo?</h3>
+
+        <div class="selection-button-radio" style="margin-top: 16px;">
+            <div class="multiple-choice" data-target="advice-9-yes" style="margin-bottom: 0;">
+                <input id="radio-inline-16" type="radio" name="radio-inline-group-9" value="retry">
+                <label for="radio-inline-16" class="block-label" style="position: static;">Yes - send this photo</label>
+            </div>
+        </div>
+        <div class="selection-button-radio" style="margin-top: 8px;">
+            <div class="multiple-choice" data-target="advice-9-no" style="margin-bottom: 0;">
+                <input id="radio-inline-17" type="radio" name="radio-inline-group-9" value="continue">
+                <label for="radio-inline-17"class="block-label" style="position: static;">No - try again</label>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <a class="button" href="service-access-photo-id-camera{{ params }}" id="">Continue</a>
+        </div>
+
+
+
+    </section>
+
+    <!-- Image is blurred - V2 screen - What to do if it is hard for you to take or check your photo  -->
+    <section class="preview-container" id="scan-id-12d" style="display:none">
+
+        <p><a href="#" class="link-back">Back to: Your photo may be too blurry</a></p>
+
+        <h1 style="padding-bottom: 0;">What to do if it's hard for you to take or check your photo</h1>
+
+        <p>You could ask someone to help you with your photo.</p>
+        <p>If you cannot get help and you do not want to try again, then you can send the photo you have already taken. We may not be able to approve you if your photo is too blurry.</p>
+        <p>Instead, you can prove who you are without sending a photo of your I.D. You may need to contact your GP surgery to do this.</p>
+ 
+        <h3>What do you want to do next?</h3>
+
+        <div class="selection-button-radio" style="margin-top: 16px;">
+            <div class="multiple-choice" data-target="advice-9-yes" style="margin-bottom: 0;">
+                <input id="radio-inline-16" type="radio" name="radio-inline-group-9" value="retry">
+                <label for="radio-inline-16" class="block-label" style="position: static;">I will try again </label>
+            </div>
+        </div>
+        <div class="selection-button-radio" style="margin-top: 8px;">
+            <div class="multiple-choice" data-target="advice-9-no" style="margin-bottom: 0;">
+                <input id="radio-inline-17" type="radio" name="radio-inline-group-9" value="continue">
+                <label for="radio-inline-17"class="block-label" style="position: static;">I want to send my photo</label>
+            </div>
+        </div>
+        <div class="selection-button-radio" style="margin-top: 8px;">
+            <div class="multiple-choice" data-target="advice-9-no" style="margin-bottom: 0;">
+                <input id="radio-inline-17" type="radio" name="radio-inline-group-9" value="continue">
+                <label for="radio-inline-17"class="block-label" style="position: static;">Prove who I am without sending a photo of my I.D. </label>
+            </div>
+        </div>
+
+
+        <div class="form-group">
+            <a class="button" href="service-access-photo-id-camera{{ params }}" id="">Continue</a>
+        </div>
+
+
+
+    </section>
+
+    <!-- Image is blurred - 1st attempt- Show ALL users - no photo -->
+    <section class="preview-container" id="scan-id-4k" style="display:none">
+
+        <h1 style="padding-bottom: 0;">Your photo is too blurry - you need to take another photo</h1>
+
+        <p>A blurry photo can make it hard for us to see your {{ idType }} clearly, and we may not be able to approve you.</p>
+
+        <p>You should:</p>
+
+        <ul class="list list-bullet">
+            <li>take your photo in a light place (a bright room or outside) </li>
+            <li>clean the camera lens </li>
+            <li>focus on your {{ idType }} (try tapping your phone or tablet screen)</li>
+        </ul>
+
+        <p><a href="javascript:void(0)" >What to do if you have problems with movement</a></p>
+
+
+        {% if upload === 'file' %}
+        <div class="form-group">
+            <a class="button" href="service-access-photo-id-type{{ params }}" id="">Try again - choose the photo I.D. you want to use</a>
+        </div>
+        {% else %}
+        <div class="form-group">
+            <a class="button" href="service-access-photo-id-camera{{ params }}" id="">Take another photo</a>
+        </div>
+        {% endif %}
+
+
+
+    </section>
+
+    <!-- Image is blurred - 1st attempt- Show ALL users - with photo -->
+    <section class="preview-container" id="scan-id-4m" style="display:none">
+
+        <h1 style="padding-bottom: 0;">Your photo is too blurry - you need to take another photo</h1>
+
+        <details class="" role="group" >
+            <summary data-analytics="summary" role="button" aria-controls="details-content-1" aria-expanded="true">
+                <span class="details__summary">Show photo</span>
+            </summary>
+            <div class="reading-width">
+                <div id="scan-id-preview" style="padding-top: 16px;">
+                    <img id="uploaded-id-3" src="#" alt="A preview of your photo of your I.D document" style="height:auto;"/>
+                </div>
+            </div>
+        </details>
+
+        <p>A blurry photo can make it hard for us to see your {{ idType }} clearly, and we may not be able to approve you.</p>
+
+        <p>You should:</p>
+
+        <ul class="list list-bullet">
+            <li>take your photo in a light place (a bright room or outside) </li>
+            <li>clean the camera lens </li>
+            <li>focus on your {{ idType }} (try tapping your phone or tablet screen)</li>
+        </ul>
+
+        <p><a href="javascript:void(0)">What to do if you have problems with movement</a></p>
+
+        {% if upload === 'file' %}
+        <div class="form-group">
+            <a class="button" href="service-access-photo-id-type{{ params }}" id="">Try again - choose the photo I.D. you want to use</a>
+        </div>
+        {% else %}
+        <div class="form-group">
+            <a class="button" href="service-access-photo-id-camera{{ params }}" id="">Take another photo</a>
+        </div>
+        {% endif %}
+
+
+
+    </section>
+
+    <!-- Image is blurred - 2nd attempt img-visible (v1) -->
+    <section class="preview-container" id="scan-id-4b" style="display:none">
+
+        <h1 style="padding-bottom: 0;">Your photo is too blurry</h1>
+
+        <div class="reading-width">
+            <div id="scan-id-preview" style="padding-top: 16px;">
+                <img id="uploaded-id-2" src="#" alt="A preview of your photo of your I.D document" style="height:auto;"/>
+            </div>
+        </div>
+
+        <p>A blurry photo can make it hard for us to see your {{ idType }} clearly, and we may not be able to approve you.</p>
+
+        <p>If this keeps happening but you think the text on your {{ idType }} is clear, then you do not need to take another photo.</p>
+
+        <legend><h2 class="h3" style="margin-top: 32px;">Is the text clear enough?</h2></legend>
+
+        {% if upload === 'file' %}
+        <div class="selection-button-radio" style="margin-top: 16px;">
+            <div class="multiple-choice" data-target="advice-8-yes" style="margin-bottom: 0;">
+                <input id="radio-inline-13" type="radio" name="radio-inline-group-8" value="startover">
+                <label for="radio-inline-13" class="block-label" style="position: static;">No - try again</label>
+            </div>
+        </div>
+        {% else %}
+        <div class="selection-button-radio" style="margin-top: 16px;">
+            <div class="multiple-choice" data-target="advice-8-yes" style="margin-bottom: 0;">
+                <input id="radio-inline-13" type="radio" name="radio-inline-group-8" value="retry">
+                <label for="radio-inline-13" class="block-label" style="position: static;">No - take another photo</label>
+            </div>
+        </div>
+        {% endif %}
+
+        <div class="selection-button-radio" style="margin-top: 8px;">
+            <div class="multiple-choice" data-target="advice-8-no" style="margin-bottom: 0;">
+                <input id="radio-inline-14" type="radio" name="radio-inline-group-8" value="continue">
+                <label for="radio-inline-14"class="block-label" style="position: static;">Yes - use this photo</label>
+            </div>
+        </div>
+        <div class="selection-button-radio" style="margin-top: 8px;">
+            <div class="multiple-choice" data-target="advice-8-no" style="margin-bottom: 0;">
+                <input id="radio-inline-15" type="radio" name="radio-inline-group-8" value="continue">
+                <label for="radio-inline-15"class="block-label" style="position: static;">I am not sure - use this photo</label>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <a class="button button--next" href="#" id="check-8-submit">Continue</a>
+        </div>
+
+    </section>
+
+    <!-- Image is blurred - 2nd attempt-img hidden(v2) -->
+    <section class="preview-container" id="scan-id-4c" style="display:none">
+
+        <h1 style="padding-bottom: 0;">Your photo is too blurry</h1>
+
+
+        <details class="" role="group" >
+            <summary data-analytics="summary" role="button" aria-controls="details-content-1" aria-expanded="true">
+                <span class="details__summary">Show photo</span>
+            </summary>
+            <div class="reading-width">
+                <div id="scan-id-preview" style="padding-top: 16px;">
+                    <img id="uploaded-id-4" src="#" alt="A preview of your photo of your I.D document" style="height:auto;"/>
+                </div>
+            </div>
+        </details>
+
+        <p>A blurry photo can make it hard for us to see your passport clearly, and we may not be able to approve you.</p>
+
+        <p>If this keeps happening but you think the text on your passport is clear, then you do not need to try another photo.</p>
+
+        <legend><h2 class="h3" style="margin-top: 32px;">Is the text clear enough?</h2></legend>
+
+        <div class="selection-button-radio" style="margin-top: 16px;">
+            <div class="multiple-choice" data-target="advice-9-yes" style="margin-bottom: 0;">
+                <input id="radio-inline-16" type="radio" name="radio-inline-group-9" value="retry">
+                <label for="radio-inline-16" class="block-label" style="position: static;">No - take another photo</label>
+            </div>
+        </div>
+        <div class="selection-button-radio" style="margin-top: 8px;">
+            <div class="multiple-choice" data-target="advice-9-no" style="margin-bottom: 0;">
+                <input id="radio-inline-17" type="radio" name="radio-inline-group-9" value="continue">
+                <label for="radio-inline-17"class="block-label" style="position: static;">Yes - use this photo</label>
+            </div>
+        </div>
+        <div class="selection-button-radio" style="margin-top: 8px;">
+            <div class="multiple-choice" data-target="advice-9-no" style="margin-bottom: 0;">
+                <input id="radio-inline-18" type="radio" name="radio-inline-group-9" value="continue">
+                <label for="radio-inline-18"class="block-label" style="position: static;">I am not sure - use this photo</label>
+            </div>
+        </div>
+
+
+        <div class="form-group">
+            <a class="button button--next" href="#" id="check-9-submit">Continue</a>
+        </div>
+
+    </section>
+
+    <!-- section to show paycasso preflight no-image error try again only -->
+    <section class="preview-container" id="scan-id-7e" style="display:none">
+
+        <h1 style="padding-bottom: 0;">There is a problem with your photo</h1>
+
+        <p>We could not detect a {{ idType }} in the photo</p>
+
+        <p>This might be because:</p>
+
+        <summary data-analytics="summary" role="button" aria-controls="details-content-1" aria-expanded="true">
+
+            {% if idType === 'passport' %}
+            <ul class="list list-bullet">
+                <li>we cannot see the edges of the details page of the {{ idType }}</li>
+                <li>we cannot see all the information we need</li>
+                <li>you did not take a photo of a {{ idType }}</li>
+            </ul>
+            {% else %}
+            <ul class="list list-bullet">
+                <li>we cannot see the edges of the corners of the {{ idType }}</li>
+                <li>we cannot see all the information we need</li>
+                <li>you did not take a photo of a {{ idType }}</li>
+            </ul>
+            {% endif %}
+
+        </summary>
+
+
+        <div class="reading-width">
+            <div id="scan-id-preview" style="padding-top: 16px;">
+
+                {% if idType === 'passport' %}
+                <img src="/images/how-to-hold-a-passport.png" alt="how to take a photo of your {{ idType }} " width="600" style="display:block;margin-left:auto;margin-right:auto;">
+                {% else %}
+                <img src="/images/DL-guide@2x.png" alt="how to take a photo of your {{ idType }} " width="600" style="display:block;margin-left:auto;margin-right:auto;">
+                {% endif %}
+            </div>
+        </div>
+
+
+        <div class="form-group">
+            <a class="button" href="service-access-photo-id-camera{{ params }}" id="">Take another photo</a>
+        </div>
+
+        <p class="small">Reference: {% if manual === 'true' %}CIDXXXX{% else %}CIDXXXX{% endif %}</p>
+
+    </section>
+
+    <!-- section to show user driven checks -->
+    <section class="preview-container" id="scan-id-5" style="display:none">
+
+        {% include '_partials/_includes/_check-photo-v3.html' %}
+
+    </section>
+
+    <!-- section to show uploading error -->
+    <section class="preview-container" id="scan-id-6" style="display:none">
+
+        <h1 style="padding-bottom: 0;">Something went wrong</h1>
+
+        <div id="nhs-number" class="has-error form-row-error-active">
+            <p>We could not upload your photo.</p>
+        </div>
+
+        <div class="form-group">
+            <a class="button" href="" id="submit-photoId-back-button">Try again</a>
+            <!--<p><a href="service-access-photo-id-camera{{ params }}" id="">Cancel</a></p>-->
+        </div>
+
+        <div class="callout callout--info" style="margin-top: 28px;">
+            <p>If you keep getting this message, please try again later. It might be a problem with your internet
+                connection.</p>
+        </div>
+
+
+        <p class="small">Reference: {% if manual === 'true' %}CID4001{% else %}CID8001{% endif %}</p>
+
+    </section>
+
+    {# section to show the AWS face check validation errors - no face #}
+    <section class="preview-container" id="scan-id-7a" style="display:none">
+
+        <h1 style="padding-bottom: 0;">There is a problem with your photo</h1>
+
+        <p>We cannot see all the information we need.</p>
+        <p>Make sure you follow the photo instructions.</p>
+
+        <div class="form-group">
+            <a class="button" href="service-access-photo-id-type{{ params }}" id="">Back to step 1 - send a photo of your I.D.</a>
+        </div>
+        <p class="small" style="margin-top: 28px;">Reference: {% if manual === 'true' %}CID4005{% else %}CID8005{% endif %}</p>
+    </section>
+
+    {# section to show the AWS face check validation errors - multiple face #}
+    <section class="preview-container" id="scan-id-7b" style="display:none">
+
+        <h1 style="padding-bottom: 0;">There is a problem with your photo</h1>
+
+        <p>There is more than 1 face in your photo.</p>
+
+        <div class="reading-width">
+            <div id="scan-id-preview" style="padding-top: 16px;">
+
+                {% if idType === 'passport' %}
+                <img src="/images/how-to-hold-a-passport.png" alt="how to take a photo of your {{ idType }} " width="600" style="display:block;margin-left:auto;margin-right:auto;">
+                {% endif %}
+            </div>
+        </div>
+                
+
+        <details class="" role="group" >
+            <summary data-analytics="summary" role="button" aria-controls="details-content-1" aria-expanded="true">
+
+                {% if idType === 'passport' %}
+                <span class="details__summary">There are multilple faces on the same page</span>
+                {% else %}
+                <span class="details__summary">There are 2 faces on my I.D. card</span>
+                {% endif %}
+
+            </summary>
+            <div class="callout callout--info callout--friendly" id="details-content-1" aria-hidden="false">
+                <div class="reading-width">
+                    <p>Some I.D. types have multiple faces on the same side. If so, you can use the photo taken.</p>
+                    <p><a href="javascript:fakeClick(event, document.getElementById('continueButton2'))" id="check-6-submit">Use this photo</a></p>
+                </div>
+            </div>
+        </details>
+
+        <div class="form-group">
+            <a class="button" href="service-access-photo-id-type{{ params }}" id=""><i style="font-style: normal;">Back to:</i> Step 1 - send a photo of your I.D.</a>
+        </div>
+        <p class="small" style="margin-top: 28px;">Reference: CID8006</p>
+    </section>
+
+    {# section to show the AWS technical errors or timeouts #}
+    <section class="preview-container" id="scan-id-7c" style="display:none">
+
+        <h1 style="padding-bottom: 0;">Something went wrong</h1>
+
+        <p>There was a technical problem.</p>
+
+        <div class="form-group">
+            <a class="button" href="service-access-photo-id-type{{ params }}" id=""><i style="font-style: normal;">Back to:</i> Step 1 - send a photo of your I.D.</a>
+        </div>
+        <p class="small" style="margin-top: 28px;">Reference: {% if manual === 'true' %}CID4007{% else %}CID8007{% endif %}</p>
+    </section>
+
+    {# section to show the antivirus error #}
+    <section class="preview-container" id="scan-id-8" style="display:none">
+
+        <h1 style="padding-bottom: 0;">You cannot send this photo because the file is damaged</h1>
+
+        <p>You can <a class="" href="service-access-photo-id-camera{{ params }}" id="tryagain">{% if upload === 'file' %}upload{% else %}take{% endif %} another photo.</a></p>
+        <p>If this keeps happening, there might be a problem with your device. You could take a photo using a different device, and then upload it.</p>
+
+        <p class="small" style="margin-top: 28px;">Reference: {% if manual === 'true' %}CID4015{% else %}CID8015{% endif %}</p> <!-- CID4015 for Automation -->
+    </section>
+
+    {# section to show the file saving and server-side validation errors #}
+    <section class="preview-container" id="scan-id-9a" style="display:none">
+
+        <h1 style="padding-bottom: 0;">There is a problem</h1>
+
+        <p>You might have sent a file format we cannot accept.</p>
+        <p>If this keeps happening, you could take a photo using a different device or mobile phone app, then upload it.</p>
+
+        <div class="form-group">
+            <a class="button" href="service-access-photo-id-camera{{ params }}" id="tryagain">Try again</a>
+        </div>
+        <p class="small" style="margin-top: 28px;">Reference: {% if manual === 'true' %}CID4003{% else %}CID8003{% endif %}</p>
+    </section>
+
+    {# section to show the technical or timeout errors #}
+    <section class="preview-container" id="scan-id-9b" style="display:none">
+
+        <h1 style="padding-bottom: 0;">Something went wrong</h1>
+
+        <p>There was a technical problem.</p>
+
+        <div class="form-group">
+            <a class="button" href="service-access-photo-id-camera{{ params }}" id="">Try again</a>
+        </div>
+
+        <div class="" style="margin-top: 28px;">
+            <p>If you keep getting this message, there might be a problem with your internet connection</p>
+        </div>
+
+        <p class="small">Reference: {% if manual === 'true' %}CID4004{% else %}CID8004{% endif %}</p>
+
+    </section>
+
+
+    {% if formerror === 'invalid' %}
+    <button id="confirmButton" class="u-visuallyhidden" style="visibility:hidden">Continue to error</button>
+    {% else %}
+    <button id="continueButton" class="u-visuallyhidden" style="visibility:hidden;"
+            onclick="fakeClick(event, document.getElementById('continueButton2'))">Continue
+    </button>
+
+    {% if idType === 'European national identity card' or idType === 'European driving licence' %}
+
+    <a id="continueButton2" class="u-visuallyhidden" style="visibility:hidden;" href="service-access-photo-id-camera-2{{ params }}">Continue</a>
+
+    {% else %}
+
+    <a id="continueButton2" class="u-visuallyhidden" style="visibility:hidden;" href="service-access-video-selfie{{ params }}">Continue</a>
+
+    {% endif %}
+
+    {% endif %}
+
+    <script>
+        function fakeClick(event, anchorObj) {
+            if (anchorObj.click) {
+                anchorObj.click()
+            } else if(document.createEvent) {
+                if(event.target !== anchorObj) {
+                    var evt = document.createEvent("MouseEvents");
+                    evt.initMouseEvent("click", true, true, window,
+                        0, 0, 0, 0, 0, false, false, false, false, 0, null);
+                    var allowDefault = anchorObj.dispatchEvent(evt);
+                    // you can check allowDefault for false to see if
+                    // any handler called evt.preventDefault().
+                    // Firefox will *not* redirect to anchorObj.href
+                    // for you. However every other browser will.
+                }
+            }
+        }
+    </script>
+
+</div>
+
+{% endblock %}

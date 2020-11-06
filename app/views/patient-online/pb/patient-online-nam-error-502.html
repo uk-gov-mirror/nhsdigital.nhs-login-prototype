@@ -1,0 +1,17 @@
+{% extends '_layouts/_grids/_grid-2-1-hotjar.html' %}
+{% block page_title %}Something went wrong{% endblock %}
+
+{% set params = "?service=" + service + "&serviceName=" + serviceName + "&emailAddress=" + emailAddress + "&mobileNum=" + mobileNum + "&hidehead=" + hidehead + "&devMode=" + devMode + "&returnUrl=" + returnUrl %}
+
+{% block content %}
+
+<div class="first-item">
+    <h1>Something went wrong</h1>
+
+    <p>We are having technical problems. Try again later.</p>
+
+    <p class="small">Reference: CID7007</p>
+
+</div>
+
+{% endblock %}

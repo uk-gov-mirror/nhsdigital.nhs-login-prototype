@@ -1,0 +1,50 @@
+{% extends '_layouts/_grids/_grid-2-1-stacked.html' %}
+{% block page_title %}Contact your GP surgery for your registration details{% endblock %}
+
+{% set signedin = 'true' %}
+{% set params = "?service=" + service + "&serviceName=" + serviceName + "&emailAddress=" + emailAddress + "&mobileNum=" + mobileNum + "&hidehead=" + hidehead + "&devMode=" + devMode + "&returnUrl=" + returnUrl + "&manual=" + manual + "&uplift=" + uplift %}
+
+{% block content %}
+
+<div class="first-item">
+
+  {% if hideBack !== 'true' %}
+
+{#     {% if drop === 'type' %}  #}      
+    <p><a href="/patient-online/v22/patient-online-details-2{{ params }}" class="link-back"><i style="font-weight: normal;font-style: normal;">Back to:</i> Do you have the 3 registration details?</a></p>
+{#     {% else %}
+      <p><a href="service-access-linkage-key{{ params }}" class="link-back"><i style="font-weight: normal;font-style: normal;">Back to:</i> Enter your registration details</a></p>
+    {% endif %} #}
+
+  {% endif %}
+
+  <h1 class="">Contact your GP surgery for your registration details</h1>
+
+  <p>What you need to do:</p>
+
+  <ol>
+    <li>Contact your GP surgery. If you can, contact them without visiting in person.</li>
+    <li>Tell your GP surgery that you need your registration details for their online services. The 3 details you need are:
+      <ul>
+        <li>Linkage Key (could be called Passphrase)</li>
+        <li>O.D.S. Code (could be called Organisation Code or Practice I.D.)</li>
+        <li>Account I.D.</li>
+      </ul>
+    </li>
+    {% if serviceName %}
+    <li>When you have all 3 details, use your NHS login to access <em style="font-weight: bold;font-style: normal;">{{ serviceName }}</em>. You can use the 3 registration details to prove who you are instead of sending a photo of your I.D.</li>
+    {% else %}
+    <li>When you have all 3 details, go to the website or app you were trying to access and use your NHS login. You can then prove who you are using the 3 registration details, instead of sending a photo of your I.D.</li>
+    {% endif %}
+  </ol>
+
+  <div style="width: 100%; height: 12px; border-bottom: 1px solid black; text-align: center; margin: 40px 0;">
+    <span style="font-size: 18px; background-color: #f0f4f5; padding: 0 10px;">Or</span>
+  </div>
+
+  <p>You can <a href="service-access-what-you-need{{ params }}">send a photo of your I.D. to prove who you are.</a></p>
+
+
+</div>
+
+{% endblock %}

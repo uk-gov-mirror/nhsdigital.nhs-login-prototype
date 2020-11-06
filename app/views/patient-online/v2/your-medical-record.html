@@ -1,0 +1,19 @@
+{% extends '_layouts/_nhsuk_layout.html' %}
+{% block page_title %}Your Medical Record{% endblock %}
+
+{% block body %}
+
+{% import "_partials/_components/_local-header.html" as localHeader %}
+  {{ localHeader.pattern('Access your medical record',' ') }}
+
+<h1>Welcome to your medical record</h1>
+<ul>
+  <li><a href="#">Medical history</a></li>
+  <li><a href="#">Medication</a></li>
+  <li><a href="#">Appointments</a></li>
+</ul>
+
+<a href="create-1" class="button">Start</a>
+
+{% endblock %}
+{% block rightcol %}{% endblock %}

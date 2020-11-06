@@ -1,0 +1,33 @@
+{% extends '_layouts/_grids/_grid-2-1.html' %}
+{% block page_title %}View your hospital record {{serviceName}}{% endblock %}
+
+{% set params = "?serviceName=" + serviceName + "&hidehead=" + hidehead %}
+
+{% block content %}
+
+<div class="first-item">
+  <form>
+    <div class="form-group">
+      <fieldset class="">
+        <h1><legend>You can find your online GP registration details on Patient Access</legend></h1>
+        <p>Follow the steps below.</p>
+        
+        <ol>
+          <li>Go to <a href="">Patient Access</a> and login</li>
+          <li>Go to your account tab</li>
+          <li>Select the advanced tab</li>
+          <li>Copy the linkage key, ODS code and access ID details</li>
+          <li>Continue to the next screen and enter the details</li>
+        </ol>
+
+    </div>
+    
+    <div class="form-group">
+      <a href="patient-online-linkage-key{{ params }}" class="button" id="">Continue</a>
+    </div>
+
+
+  </form>
+</div>
+
+{% endblock %}

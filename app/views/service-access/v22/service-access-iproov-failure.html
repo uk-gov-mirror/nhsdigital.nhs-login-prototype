@@ -1,0 +1,131 @@
+{% extends '_layouts/_grids/_grid-2-1-hotjar.html' %}
+{% block page_title %}The scan cannot match your face to your photo I.D.{% endblock %}
+
+{% set signedin = 'true' %}
+{% set params = "?service=" + service + "&serviceName=" + serviceName + "&emailAddress=" + emailAddress + "&mobileNum=" + mobileNum + "&idType=" + idType + "&hidehead=" + hidehead + "&challenge=" + challenge + "&devMode=" + devMode + "&returnUrl=" + returnUrl + "&genericButton=" + genericButton + "&iproovFailReason=" + iproovFailReason + "&iProovThirdAttempt=" + iProovThirdAttempt + "&pyiSecondAttempt=" + pyiSecondAttempt + "&uplift=" + uplift %}
+
+{% block content %}
+
+<div class="first-item">
+
+  <section class="" id="scan-id-1">
+
+      <form>
+
+          {% if iproovFailReason === "client_config" %}
+
+            <h1>Something went wrong</h1>
+
+          {% elif iproovFailReason === "two_faces" %}
+
+            <h1>We are having problems with the scan</h1>
+
+          {% else %}
+
+            <h1>The scan cannot match your face to your photo I.D.</h1>
+
+          {% endif %}
+
+          {% if iProovThirdAttempt === "true" %}
+
+                {% if pyiSecondAttempt === "true" %}
+
+                    <p>Instead of trying the scan again, you will need to record a short video of your face.</p>
+
+                    <p>We will tell you what to do on the next page.</p>
+
+                      <div class="form-group">
+                          <a href="service-access-video-selfie-camera{{ params }}" class="button camera-button">Continue to video</a>
+                      </div>
+
+                {% else %}
+
+                      <p>You need to send another photo of your I.D.</p>
+
+                      <p>It might help if you try a different type of I.D.</p>
+
+                      <div class="form-group">
+                          <a href="service-access-photo-id-type{{ params }}" class="button camera-button">Back to step 1 - send a photo of your I.D.</a>
+                      </div>
+
+
+                {% endif %}
+
+          {% elif iproovFailReason === "two_faces" %}
+          
+            <p>You will need to record a video of your face instead.</p>
+
+            <p>We will tell you what to do on the next page.</p>
+
+            <div class="form-group">
+              <a href="service-access-start{{ params }}" class="button camera-button">Continue to video</a>
+            </div>
+
+          {% else %}
+
+          {% if iproovFailReason === "ambiguous_outcome" or iproovFailReason === "network_problem" or iproovFailReason === "user_timeout" or iproovFailReason === "client_api" or iproovFailReason === "client_camera" or iproovFailReason === "client_stream" or iproovFailReason === "client_error" or iproovFailReason === "server_abort" %}
+
+          <!-- no message -->
+
+          {% elif iproovFailReason === "user_abort" %}
+
+          <p>This is because you stopped the scan.</p>
+
+          {% elif iproovFailReason === "lighting_flash_reflection_too_low" %}
+
+          <p>Make sure your phone's screen brightness is on full.</p>
+
+          {% elif iproovFailReason === "lighting_backlit" %}
+
+          <p>Make sure there is no bright light behind your head.</p>
+
+          {% elif iproovFailReason === "lighting_too_dark" %}
+
+          <p>It's too dark. Try moving somewhere lighter, or turning on a light.</p>
+
+          {% elif iproovFailReason === "lighting_face_too_bright" %}
+
+          <p>There's too much light shining on your face.</p>
+
+          {% elif iproovFailReason === "motion_too_much_movement" %}
+
+          <p>Try to stay still when the scan starts.</p>
+
+          {% elif iproovFailReason === "motion_too_much_mouth_movement" %}
+
+          <p>Do not talk when the scan starts.</p>
+
+          {% elif iproovFailReason === "client_config" %}
+
+          <p>We are having technical problems. Try again later.</p>
+          <p class="small">Reference: CID4010</p>
+
+          {% else %}
+
+          <!-- no message -->
+
+          {% endif %}
+
+          {% if iproovFailReason !== "client_config" %}
+
+              <p></p>
+              <div class="form-group">
+                  <a href="service-access-iproov-instructions{{ params }}" class="button camera-button">Try face scan again</a>
+              </div>
+
+          {% endif %}
+
+          {% endif %}
+
+      </form>
+
+  </section>
+
+</div>
+
+<script type="text/javascript">
+
+
+</script>
+
+{% endblock %}

@@ -1,0 +1,51 @@
+{% extends '_layouts/_grids/_grid-2-1-hotjar.html' %}
+{% block page_title %}View your medical record {{serviceName}}{% endblock %}
+
+{% set params = "?serviceName=" + serviceName + "&service=" + service + "&lsId=" + lsId + "&lsAccess=" + lsAccess + "&lsStudy=" + lsStudy + "&system=" + system + "&hidehead=" + hidehead %}
+
+{% block content %}
+<link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet">
+
+<div class="first-item">
+  <form>
+    <div class="form-group">
+      <p><a href="javascript:history.go(-1)" class="link-back">Back</a></p>
+      <fieldset class="">
+        <h1><legend>What type of ID do you have?</legend></h1>
+        <div>
+          <label class="block-label selection-button-radio" for="radio-inline-1">
+            <input id="radio-inline-1" type="radio" name="radio-inline-group" value="/service-access/v9/service-access-account{{ params }}">
+            UK passport or UK driving licence
+          </label>
+        </div>
+        <div>
+          <label class="block-label selection-button-radio" for="radio-inline-3">
+            <input id="radio-inline-3" type="radio" name="radio-inline-group" value="/service-access/v9/service-access-account{{ params }}">
+            Passport, driving licence or ID card from a different country
+          </label>
+        </div>
+        <div>
+          <label class="block-label selection-button-radio" for="radio-inline-4">
+            <input id="radio-inline-4" type="radio" name="radio-inline-group" value="/service-access/v9/service-access-account{{ params }}">
+            None of these
+          </label>
+        </div>
+
+
+      </fieldset>
+    </div>
+    <div class="form-group">
+      <a class="button" href="#" id="continue">Continue</a>
+    </div>
+    <!--<p><a href="/service-access/mvp/service-access-pol-3{{ params }}">I want to <span style="text-transform: lowercase">{{ serviceName }}</span> another way</a></p>-->
+  </form>
+</div>
+
+
+
+
+
+
+
+
+{% endblock %}

@@ -1,0 +1,21 @@
+{% extends '_layouts/_grids/_grid-2-1-stacked.html' %}
+{% block page_title %}Access {{ serviceName }} - Sorry - we're having technical problems - CID-9001{% endblock %}
+
+{% set signedin = 'true' %}
+{% set params = "?service=" + service + "&serviceName=" + serviceName + "&emailAddress=" + emailAddress + "&mobileNum=" + mobileNum + "&hidehead=" + hidehead + "&devMode=" + devMode + "&returnUrl=" + returnUrl + "&uplift=" + uplift %}
+
+{% block content %}
+
+<div class="first-item">
+
+  <p><a href="javascript:history.go(-1)" class="link-back">Back</a></p>
+
+  <h1 class="">Sorry - we're having technical problems</h1>
+
+  <p>Please try again later.</p>
+
+  <p class="small">Reference: CID-9001</p>
+
+</div>
+
+{% endblock %}

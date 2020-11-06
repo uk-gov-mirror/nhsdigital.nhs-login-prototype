@@ -1,0 +1,35 @@
+{% extends '_layouts/_grids/_grid-2-1-nhsone.html' %}
+{% block page_title %}Access {{ serviceName }} - What is your NHS number?{% endblock %}
+
+{% set signedin = 'true' %}
+{% set params = "?service=" + service + "&serviceName=" + serviceName + "&emailAddress=" + emailAddress + "&mobileNum=" + mobileNum + "&hidehead=" + hidehead + "&poluser=" + poluser + "&system=" + system %}
+
+{% block content %}
+
+<div class="first-item">
+
+  <form>
+    <div class="form-group">
+
+      <p><a href="javascript:history.go(-1)" class="link-back">Back</a></p>
+
+      <!--<span class="section-header">About you</span>-->
+
+      <h1><legend>What's your last name?</legend></h1>
+
+      <div class="form-group">
+       <!-- <label class="form-label" for="field3">Last name</label> -->
+        <input aria-label="Last name" class="form-control" id="field3" name="field3" type="text" value="">
+      </div>
+
+    </div>
+
+
+    <div class="form-group">
+      <a class="button" href="patient-online-about-you-dob{{ params }}">Continue</a>
+    </div>
+  </form>
+
+</div>
+
+{% endblock %}

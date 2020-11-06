@@ -1,0 +1,19 @@
+{% extends '_layouts/_grids/_grid-2-1-nhsone.html' %}
+{% block page_title %}Prove your Identity Service{% endblock %}
+{% set params = "?serviceName=" + serviceName + "&service=" + service + "&hidehead=" + hidehead %}
+
+{% block content %}
+
+<meta http-equiv="refresh" content="5;url=../../service-access/v8/service-access-pol-2{{ params }}&poluser=true">
+
+	<!--<span class="section-header">Connecting to your GP</span>-->
+	<h1 style="">Connecting to your GP</h1>
+
+
+	<p style="">This should only take a few seconds</p>
+
+		      	<div class="" style="">
+		        	<img src="/images/ajax-loader.gif" alt="loading animation" title="" style="opacity: 0.5;" class="ajaxLoader"/>
+		      	</div>
+
+{% endblock %}

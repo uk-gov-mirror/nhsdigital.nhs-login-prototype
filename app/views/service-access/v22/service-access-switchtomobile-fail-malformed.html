@@ -1,0 +1,22 @@
+{% extends '_layouts/_grids/_grid-2-1-hotjar.html' %}
+{% block page_title %}Access {{ serviceName }} - There's a problem{% endblock %}
+
+{% set signedin = 'true' %}
+{% set params = "?service=" + service + "&serviceName=" + serviceName + "&emailAddress=" + emailAddress + "&mobileNum=" + mobileNum + "&idType=" + idType + "&hidehead=" + hidehead + "&devMode=" + devMode + "&returnUrl=" + returnUrl + "&uplift=" + uplift %}
+
+{% block content %}
+
+
+<div class="first-item">
+
+  <h1>There's a problem</h1>
+
+  <p>The link did not work.</p>
+
+  <div class="form-group">
+    <a class="button" href="/create-account/v20/login-nhs{{ params }}">Log in again</a>
+  </div>
+
+</div>
+
+{% endblock %}

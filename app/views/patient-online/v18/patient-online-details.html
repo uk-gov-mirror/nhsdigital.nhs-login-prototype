@@ -1,0 +1,92 @@
+{% extends '_layouts/_grids/_grid-1-hotjar.html' %}
+{% block page_title %}You can use details from your GP surgery to prove who you are{% endblock %}
+
+{% set params = "?serviceName=" + serviceName + "&service=" + service + "&lsId=" + lsId + "&lsAccess=" + lsAccess + "&lsStudy=" + lsStudy + "&system=" + system + "&mobileNum=" + mobileNum + "&hidehead=" + hidehead + "&devMode=" + devMode + "&returnUrl=" + returnUrl + "&surgery=" + surgery + "&practiceID=" + practiceID + "&drop=" + drop %}
+
+{% block content %}
+
+<div class="first-item">
+
+  {% if hideBack !== 'true' %}
+
+    {% if drop === 'type' %}
+      <p><a href="/service-access/v18/service-access-photo-id-type{{ params }}" class="link-back"><i style="font-weight: normal;font-style: normal;">Back to:</i> Choose the photo I.D. you want to use</a></p>
+    {% else %}
+      <p><a href="/service-access/v18/service-access-what-you-need{{ params }}" class="link-back"><i style="font-weight: normal;font-style: normal;">Back to:</i> What you will need</a></p>
+
+    {% endif %}
+
+  {% endif %}
+
+  <div class="reading-width">
+    <h1>You can use details from your GP surgery to prove who you are</h1>
+
+    <p>When you sign up for your GP surgery's online services, they may give you the following registration details:</p>
+  </div>
+
+  <ul>
+    <li>Linkage Key (could be called a Passphrase)</li>
+    <li>O.D.S. Code (could be called an Organisation Code or Practice I.D.)</li>
+    <li>Account I.D.</li>
+  </ul>
+
+  <!--<div class="reading-width">-->
+    <!--<p>You can use these details to prove who you are.</p>-->
+    <!--<p>If you do not have all 3 details (or you have something different) you can try another way.</p>-->
+  <!--</div>-->
+
+  <form>
+    <div class="form-group">
+
+      <fieldset class="">
+
+        <legend for="radio-inline-group">
+          <h2 class="" style="padding:0.5em 0 0; font-size: 20px; font-weight: 600; line-height: 32px;">
+            Do you have these registration details?
+          </h2>
+        </legend>
+
+        <label class="block-label selection-button-radio" for="radio-inline-1" style="margin-top: 32px;">
+          <input id="radio-inline-1" type="radio" name="radio-inline-group" value="patient-online-linkage-key{{ params }}&poluser=true">
+          Yes - I have all 3 details
+        </label>
+        <label class="block-label selection-button-radio" for="radio-inline-2">
+          <input id="radio-inline-2" type="radio" name="radio-inline-group" value="/service-access/v18/service-access-offline-triage{{ params }}">
+          No - I've either lost or never had these details
+        </label>
+
+      </fieldset>
+    </div>
+
+    <div class="form-group">
+      <a class="button" href="#" id="continue">Continue</a>
+    </div>
+
+
+    {% if drop === 'type' %}
+    <p><a href="/service-access/v18/service-access-photo-id-type{{ params }}">Use photo I.D. to prove who you are.</a></p>
+    {% else %}
+    <p><a href="/service-access/v18/service-access-what-you-need{{ params }}">Use photo I.D. to prove who you are.</a></p>
+    {% endif %}
+
+    {% if devMode === "true" %}
+  <details class="dev-mode" role="group" >
+    <summary data-analytics="summary" role="button" aria-controls="details-content-0" aria-expanded="true">
+      <span class="details__summary">Continue with testing scenario</span>
+    </summary>
+    <div class="callout callout--info callout--friendly" id="details-content-0" aria-hidden="false">
+      <div class="reading-width">
+        <ol>
+          <li><a href="/service-access/v18/service-access-nhs{{ params }}&poluser=false">Chooses No - Assigned manual workflow</a></li>
+          <li><a href="/service-access/v18/service-access-start{{ params }}&poluser=false">Chooses No - Assigned automated workflow</a></li>
+          <li><a href="/service-access/v18/service-access-in-progress{{ params }}&poluser=false">Chooses No - User has verification request which is currently in progress</a></li>
+          <li><a href="/service-access/v18/service-access-previously-completed{{ params }}&poluser=false">Chooses No - User already completed the PYI process</a></li>
+        </ol>
+      </div>
+    </div>
+  </details>
+  {% endif %}
+
+</div>
+
+{% endblock %}

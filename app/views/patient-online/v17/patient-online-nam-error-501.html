@@ -1,0 +1,19 @@
+{% extends '_layouts/_grids/_grid-2-1-hotjar.html' %}
+{% block page_title %}You cannot use details from your GP surgery to prove who you are{% endblock %}
+
+{% set params = "?serviceName=" + serviceName + "&service=" + service + "&lsId=" + lsId + "&lsAccess=" + lsAccess + "&lsStudy=" + lsStudy + "&hidehead=" + hidehead + "&devMode=" + devMode + "&returnUrl=" + returnUrl %}
+
+{% block content %}
+
+<div class="first-item">
+    <<h1>You cannot use details from your GP surgery to prove who you are</h1>
+
+    <p>If you are trying to access NHS app, you will need to wait until your GP surgery is on the app.</p>
+
+    <p>If you are trying to access any other website or app, you can <a href="/service-access/v17/service-access-nhs{{ params }}">prove who you are using photo I.D.</a></p>
+
+    <p class="small">Reference: CID7006</p>
+
+</div>
+
+{% endblock %}

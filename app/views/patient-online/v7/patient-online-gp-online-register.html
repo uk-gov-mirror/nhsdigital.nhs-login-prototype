@@ -1,0 +1,23 @@
+{% extends '_layouts/_grids/_grid-2-1.html' %}
+{% block page_title %}View your hospital record {{serviceName}}{% endblock %}
+
+{% set params = "?serviceName=" + serviceName + "&hidehead=" + hidehead %}
+
+{% block content %}
+
+<div class="first-item">
+  <form>
+    <div class="form-group">
+      <fieldset class="">
+        <h1><legend>How to register for GP online services</legend></h1>
+        <ol>
+          <li>Go to your GP surgery and ask them for an online services registration letter</li>
+          <!--<li><a href="patient-online-linkage-key{{ params }}">Enter your registration letter details</a></li>-->
+        </ol>
+
+      </fieldset>
+    </div>
+  </form>
+</div>
+
+{% endblock %}

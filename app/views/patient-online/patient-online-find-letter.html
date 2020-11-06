@@ -1,0 +1,38 @@
+{% extends '_layouts/_grids/_grid-1-stacked.html' %}
+{% block page_title %}View your medical record {{serviceName}}{% endblock %}
+
+{% set params = "?serviceName=" + serviceName + "&hidehead=" + hidehead %}
+
+{% block content %}
+<link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet">
+
+<div class="first-item">
+  <h1>Find your online registration details</h1>
+
+  <h3>What is it?</h3>
+  <p>You may have received these registration details when you signed up for online services with your GP surgery.</p>
+
+  <h3>Why should I bother?</h3>
+  <p>You can access [service] much faster if you have the registration details.</p>
+
+  <h3>I don't have it, what do i do now?</h3>
+  <p>If you can't find your registration details then you can still access [service]</p>
+  <p>You will need Photo ID and a phone</p>
+
+  <a href="/service-access/service-access-pol-3{{ params }}" class="button">Continue</a>
+  <p><a href="/service-access/service-access-pol-1{{ params }}">I have my online registration details</a></p>
+  </div>
+</div>
+
+
+  </form>
+</div>
+
+
+
+
+
+
+  
+
+{% endblock %}

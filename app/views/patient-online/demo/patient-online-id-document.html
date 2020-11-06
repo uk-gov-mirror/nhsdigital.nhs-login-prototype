@@ -1,0 +1,55 @@
+{% extends '_layouts/_grids/_grid-2-1-hotjar.html' %}
+{% block page_title %}Access {{ serviceName }} - What type of ID do you have?{% endblock %}
+
+{% set signedin = 'true' %}
+{% set params = "?service=" + service + "&serviceName=" + serviceName + "&emailAddress=" + emailAddress + "&mobileNum=" + mobileNum + "&formerror=" + formerror + "&hidehead=" + hidehead + "&devMode=" + devMode + "&returnUrl=" + returnUrl + "&genericButton=" + genericButton %}
+
+
+{% block content %}
+
+<div class="first-item">
+
+  <p><a href="javascript:history.go(-1)" class="link-back">Back</a></p>
+
+  <form action="patient-online-id-document{{ params }}" method="POST">
+    <div class="form-group">
+      <fieldset class="">
+        <legend for="radio-inline-group">
+          <h1 style="padding-bottom: 0;">
+            What type of photo ID do you have?
+          </h1>
+        </legend>
+
+        <div>
+          <label class="block-label selection-button-radio" for="radio-inline-1">
+            <input id="radio-inline-1" type="radio" name="idType" value="passport">
+            UK passport
+          </label>
+        </div>
+
+        <div>
+          <label class="block-label selection-button-radio" for="radio-inline-2">
+            <input id="radio-inline-2" type="radio" name="idType" value="driving licence">
+            UK driving licence
+          </label>
+        </div>
+
+        <div>
+          <label class="block-label selection-button-radio" for="radio-inline-3">
+            <input id="radio-inline-3" type="radio" name="idType" value="none">
+            Neither of these
+          </label>
+        </div>
+
+      </fieldset>
+
+    </div>
+    <div class="form-group">
+      <button class="button" id="">Continue</button>
+    </div>
+
+  </form>
+
+</div>
+
+{% endblock %}

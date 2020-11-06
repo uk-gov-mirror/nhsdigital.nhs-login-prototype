@@ -1,0 +1,66 @@
+{% import '_macros/_macro_app.html' as backlink with context %}
+{% extends '_layouts/_grids/_grid-2-1-hotjar.html' %}
+{% block page_title %}Access {{ serviceName }} - Checking your details{% endblock %}
+{% set params = "?serviceName=" + serviceName + "&service=" + service + "&hidehead=" + hidehead + "&devMode=" + devMode + "&returnUrl=" + returnUrl + "&result=" + result %}
+
+{% block content %}
+
+{% if result === '200' %}
+<meta http-equiv="refresh" content="5;url={{ backlink.link() }}">
+{% elif result === 'unknown' %}
+<meta http-equiv="refresh" content="5;url=patient-online-nam-error-unknown{{ params }}">
+{% elif result === '400' %}
+<meta http-equiv="refresh" content="5;url=patient-online-nam-error-400{{ params }}">
+{% elif result === '403' %}
+<meta http-equiv="refresh" content="5;url=patient-online-nam-error-403{{ params }}">
+{% elif result === '404' %}
+<meta http-equiv="refresh" content="5;url=patient-online-nam-error-404{{ params }}">
+{% elif result === '404' %}
+<meta http-equiv="refresh" content="5;url=patient-online-nam-error-404{{ params }}">
+{% elif result === '405' %}
+<meta http-equiv="refresh" content="5;url=patient-online-nam-error-405{{ params }}">
+{% elif result === '409' %}
+<meta http-equiv="refresh" content="5;url=patient-online-nam-error-409{{ params }}">
+{% elif result === '500' %}
+<meta http-equiv="refresh" content="5;url=patient-online-nam-error-500{{ params }}">
+{% elif result === '501' %}
+<meta http-equiv="refresh" content="5;url=patient-online-nam-error-501{{ params }}">
+{% elif result === '502' %}
+<meta http-equiv="refresh" content="5;url=patient-online-nam-error-502{{ params }}">
+{% elif result === '504' %}
+<meta http-equiv="refresh" content="5;url=patient-online-nam-error-504{{ params }}">
+{% elif result === 'nhsmismatch' %}
+<meta http-equiv="refresh" content="5;url=patient-online-nam-error-nhsmismatch{{ params }}">
+{% elif result === 'slow' %}
+<meta http-equiv="refresh" content="15;url={{ backlink.link() }}">
+{% endif%}
+
+
+<h1><legend>Checking your details</legend></h1>
+
+	<!--<p style="">This should only take a few seconds</p>-->
+
+		<div class="bar_container">
+			<div id="main_container">
+				<div id="pbar" class="progress-spinner" data-percent="0">
+					<img src="/images/loader-spinner.svg" width="200px" height="200px" id="spinner" />
+					<div class="ppc-loading">
+						<div class="pcc-percents-wrapper">
+							<span id="spinner-status">Please wait</span><span aria-hidden="true">...</span>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+<script type="text/javascript">
+    setTimeout(function(){
+        $("#spinner-status").addClass("done")
+        $("#spinner").addClass("done")
+        document.getElementById("spinner-status").innerHTML = "Done"
+
+    }, 3900)
+</script>
+
+{% endblock %}
+

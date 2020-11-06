@@ -1,0 +1,44 @@
+{% extends '_layouts/_grids/_grid-2-1-stacked.html' %}
+{% block page_title %}Access {{ serviceName }}{% endblock %}
+
+{% set signedin = 'true' %}
+{% set isServiceStart = 'true' %}
+{% set params = "?service=" + service + "&serviceName=" + serviceName + "&emailAddress=" + emailAddress + "&mobileNum=" + mobileNum + "&hidehead=" + hidehead %}
+
+{% block header %}
+  {% import "_partials/_components/_local-header.html" as localHeader %}
+  {{ localHeader.pattern('Congratulations, you now have an NHS account','You can use this to access other services across the NHS','success') }}
+{% endblock %}
+
+{% block content %}
+
+<p>To access your medical record we now need to connect to your online GP account.</p>
+<details class="" role="group">
+          <summary data-analytics="summary" role="button" aria-controls="details-content-0" aria-expanded="true">
+            <span class="details__summary">How do I connect to my GP for online services?</span>
+          </summary>
+          <div class="details__content" id="details-content-0" aria-hidden="false">
+            <div class="reading-width">
+
+			<p>If you can book appointments online then you will already have an online GP account.</p>
+            <p>If you can't then you will need to contact your GP surgery to register.</p>
+
+            </div>
+          </div>
+        </details>
+<section class="service-access-wrapper">
+
+	<ol class="service-access">
+		<li class="service-access__item active">
+			<h3 class="service-access__item__title">Connect to your online GP account</h3>
+			<div class="service-access__item__desc">
+				<p>You will need the registration details that your GP surgery gave you.</p>
+			</div>
+			<a href="patient-online-gp-lookup{{ params }}" class="service-access__item__button button">Start</a>
+		</li>
+	</ol>
+
+</section>
+
+{% endblock %}
+{% block rightcol %}{% endblock %}

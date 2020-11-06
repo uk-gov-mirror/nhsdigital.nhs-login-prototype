@@ -1,0 +1,17 @@
+{% extends '_layouts/_grids/_grid-2-1-hotjar.html' %}
+{% block page_title %}Access {{ serviceName }} - There is a problem{% endblock %}
+
+{% set params = "?serviceName=" + serviceName + "&service=" + service + "&lsId=" + lsId + "&lsAccess=" + lsAccess + "&lsStudy=" + lsStudy + "&hidehead=" + hidehead + "&devMode=" + devMode + "&returnUrl=" + returnUrl %}
+
+{% block content %}
+
+<div class="first-item">
+    <h1>Sorry - we cannot create your account</h1>
+
+    <p>Please contact your doctor's surgery.</p>
+
+    <p class="small">Error: 0002</p>
+
+</div>
+
+{% endblock %}

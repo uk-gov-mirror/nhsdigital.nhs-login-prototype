@@ -1,0 +1,26 @@
+{% extends '_layouts/_grids/_grid-2-1-hotjar.html' %}
+{% block page_title %}These details do not work{% endblock %}
+
+{% set params = "?serviceName=" + serviceName + "&service=" + service + "&lsId=" + lsId + "&lsAccess=" + lsAccess + "&lsStudy=" + lsStudy + "&hidehead=" + hidehead + "&devMode=" + devMode + "&returnUrl=" + returnUrl + "&uplift=" + uplift %}
+
+{% block content %}
+
+<div class="first-item">
+    <h1>These details do not work</h1>
+
+    <p>One or more of the details you entered might be wrong.</p>
+
+    <p>You could contact your GP surgery to check:</p>
+
+    <ul>
+        <li>you have the correct registration details for their online services</li>
+        <li>your name and date of birth are correct on your NHS record</li>
+    </ul>
+
+    <a href="patient-online-linkage-key{{ params }}" class="button">Try again</a>
+
+    <p class="small">Reference: CID7003</p>
+
+</div>
+
+{% endblock %}

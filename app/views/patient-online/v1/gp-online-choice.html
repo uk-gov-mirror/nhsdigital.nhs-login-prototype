@@ -1,0 +1,61 @@
+{% extends '_layouts/_nhsuk_layout.html' %}
+{% block page_title %}Offline Vouching Identity Service{{serviceName}}{% endblock %}
+
+{% block body %}
+
+<div class="first-item">
+
+  <div style="width: 45%; margin-right: 5%; padding-right: 5%; float: left; border-right: 2px dotted grey">
+  <form>
+    <div class="form-group">
+      <fieldset class="">
+      <h3>Create an NHS Account</h3>
+
+        <h1><legend>Letter</legend></h1>
+        
+        <div class="callout callout--info">
+          <h3>What is the Letter?</h3>
+          <p>You will of received an email/letter from your GP when when requested access to GP Online services.</p>
+          <p>It will contain information such as</p>
+          <ul>
+            <li>Linkage key, access ID</li>
+            <li>User ID, Account ID</li>
+            <li>ODS CODE, ORG ID</li>
+          </ul>
+        </div>
+
+    </div>
+    <div class="form-group">
+    <p>Continue with the</p>
+      <a class="button" href="gp-online-linkage-signin" id="">Letter</a>
+    </div>
+  </form>
+  </div>
+
+  <div style="width: 45%; margin-right: 5%; padding-right: 5%; float: left; margin-top:0">
+  <form>
+    <div class="form-group">
+      <fieldset class="">
+      <h3>&nbsp;</h3>
+
+        <h1><legend>GP Online Details</legend></h1>
+        <div class="callout callout--info">
+          <h3>How do I sign in Using GP Online?</h3>
+          <p>If you know the system then you can use your details to sign in</p>
+          <p>If you can't remember the system then we can help you find it</p>
+        </div>
+
+    </div>
+    <div class="form-group">
+    <p>Continue With</p>
+      <a class="button" href="gp-online-4a" id="">GP Online Details</a>
+    </div>
+  </form>
+  </div>
+
+<div style="clear: both"></div>
+
+</div>
+
+
+{% endblock %}

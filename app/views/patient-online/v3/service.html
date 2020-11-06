@@ -1,0 +1,22 @@
+{% extends '_layouts/_grids/_grid-2-1-stacked.html' %}
+{% block page_title %}Welcome to your hospital results {{serviceName}}{% endblock %}
+{% set signedin = '' %}
+
+
+{% block topRow %}
+{% import "_partials/_components/_local-header.html" as localHeader %}
+{{ localHeader.pattern('Access your medical record',' ') }}
+{% endblock %}
+
+
+{% block content %}
+
+<p>Welcome to your hospital results</p>
+<ul>
+  <!--<li>Remove token access for a patient's identity</li>-->
+</ul>
+
+<a href="create-1" class="button">Start</a>
+
+{% endblock %}
+{% block rightcol %}{% endblock %}

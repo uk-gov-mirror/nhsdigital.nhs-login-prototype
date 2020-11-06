@@ -1,0 +1,102 @@
+{% extends '_layouts/_grids/_grid-2-1-hotjar.html' %}
+{% block page_title %}Enter the details your GP surgery gave you{% endblock %}
+
+{% set params = "?service=" + service + "&serviceName=" + serviceName + "&lsId=" + lsId + "&lsAccess=" + lsAccess + "&lsStudy=" + lsStudy + "&emailAddress=" + emailAddress + "&mobileNum=" + mobileNum + "&hidehead=" + hidehead + "&devMode=" + devMode + "&returnUrl=" + returnUrl + "&poluser=" + poluser + "&system=" + system + "&practiceID=" + practiceID + "&pyiuser=" + pyiuser + "&manual=" + manual + "&uplift=" + uplift %}
+
+{% block content %}
+
+<div class="first-item">
+
+    {% if pyiuser === "true" %}
+
+    <p><a href="javascript:history.go(-1)" class="link-back">Back</a></p>
+
+    {% else %}
+
+    <p><a href="patient-online-details-2{{ params }}" class="link-back"><i style="font-weight: normal;font-style: normal;">Back to:</i> Do you have the 3 registration details?</a></p>
+
+    {% endif %}
+
+
+  <form>
+    <div class="form-group">
+
+      <fieldset class="">
+          <h1>Enter your registration details</h1>
+
+          <p>Enter the details exactly as they are written.</p>
+
+        <div class="form-group">
+            <label class="form-label" for="field2">Linkage Key (could be called a Passphrase)</label>
+            <input class="form-control" id="field2" name="field2" type="text">
+        </div>
+
+        <div class="form-group">
+            <label class="form-label" for="field3"><abbr>O.D.S.</abbr> Code (could be called an Organisation Code or Practice I.D.)</label>
+          <input class="form-control" id="field3" name="field3" type="text">
+        </div>
+
+        <div class="form-group">
+            <label class="form-label" for="field1">Account <abbr>I.D.</abbr></label>
+            <input class="form-control" id="field1" name="field1" type="text">
+        </div>
+      </fieldset>
+    </div>
+    <div class="form-group">
+    	  {% if uplift !== 'true' %}
+
+      <a class="button" href="patient-online-about-you-name{{ params }}&result=200">Continue</a>
+
+			{% else %}
+
+      <a class="button" href="patient-online-linkage-key-loading">Continue</a>
+
+
+			{% endif %}
+
+        {% if devMode === "true" %}
+        <details class="dev-mode" role="group" >
+            <summary data-analytics="summary" role="button" aria-controls="details-content-0" aria-expanded="true">
+                <span class="details__summary">Continue with testing scenario</span>
+            </summary>
+            <div class="callout callout--info callout--friendly" id="details-content-0" aria-hidden="false">
+                <div class="reading-width">
+                    <ol>
+                        <li><a href="patient-online-about-you-name{{ params }}&result=200">[201] successful operation</a></li>
+                        <li><a href="patient-online-about-you-name{{ params }}&result=400">[400] Functional - ODS Code or NHS Number was invalid</a></li>
+                        <li><a href="patient-online-about-you-name{{ params }}&result=403">[403] Functional - the linkage key has been revoked</a></li>
+                        <li><a href="patient-online-about-you-name{{ params }}&result=404">[404] Functional - patient not found</a></li>
+                        <li><a href="patient-online-about-you-name{{ params }}&result=409">[409] Functional - conflict, account already exists</a></li>
+                        <li><a href="patient-online-about-you-name{{ params }}&result=500">[500] Technical - An unexpected error occurred processing the request</a></li>
+                        <li><a href="patient-online-about-you-name{{ params }}&result=501">[501] Technical - No GP system was found for ODS Code</a></li>
+                        <li><a href="patient-online-about-you-name{{ params }}&result=502">[502] Technical - The GP system is currently unavailable</a></li>
+                        <li><a href="patient-online-about-you-name{{ params }}&result=504">[504] Technical - The GP system did not respond in a timely fashion</a></li>
+                        <li><a href="patient-online-about-you-name{{ params }}&result=678">[678] Technical - NAM returns a 678 because it is a microtest ods code / linkage key</a></li>
+                        <li><a href="patient-online-about-you-name{{ params }}&result=unknown">Unknown Error</a></li>
+                        <li><a href="patient-online-about-you-name{{ params }}&result=nhsmismatch">NHS number mismatch at POL register</a></li>
+                        <li><a href="patient-online-about-you-name{{ params }}&result=slow">The GP system responds very slowly</a></li>
+                    </ol>
+                </div>
+            </div>
+        </details>
+        {% endif %}
+    </div>
+
+      {% if pyiuser === "true" %}
+
+      <p>If you do not have these 3 details or your details do not work, you can <a href="/service-access/v22/service-access-offline-dunno{{ params }}">ask your GP surgery for help to get your registration details.</a></p>
+
+      {% else %}
+
+      <p>If you do not have these 3 details or your details do not work, you can either:</p>
+
+      <ul>
+          <li><a href="/service-access/v22/service-access-what-you-need{ params }}">send a photo of your I.D. online</a> to prove who you are</li>
+          <li><a href="/service-access/v22/service-access-offline-retrieve{{ params }}">ask your GP surgery for help</a> to get your registration details</a></li>
+      </ul>
+
+      {% endif %}
+  </form>
+</div>
+
+{% endblock %}

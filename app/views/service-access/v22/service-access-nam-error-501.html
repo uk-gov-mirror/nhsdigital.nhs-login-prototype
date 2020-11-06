@@ -1,0 +1,19 @@
+{% extends '_layouts/_grids/_grid-2-1-hotjar.html' %}
+{% block page_title %}Access {{ serviceName }} - Sorry - we cannot connect you to your GP surgery{% endblock %}
+
+{% set params = "?serviceName=" + serviceName + "&service=" + service + "&hidehead=" + hidehead + "&devMode=" + devMode + "&returnUrl=" + returnUrl + "&result=" + result + "&reason=" + reason + "&pyiuser=true" + "&uplift=" + uplift %}
+
+{% block content %}
+
+<div class="first-item">
+
+    <h1>Your GP surgery is not on the NHS App yet</h1>
+
+    <!--p>You can get an email telling you when it’s available.</p>
+    <p><a href="https://www.nhsapp.service.nhs.uk/gp-finder?reset=true">Find your GP surgery and register your email address</a>.</p-->
+
+    <p class="small">Reference: CID7025</p>
+
+</div>
+
+{% endblock %}

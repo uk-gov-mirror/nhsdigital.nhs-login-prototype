@@ -1,0 +1,54 @@
+{% extends '_layouts/_grids/_grid-2-1.html' %}
+{% block page_title %}Login to your NHS Account {{serviceName}}{% endblock %}
+{% set signedin = '' %}
+
+{# work out where to send users #}
+{% if vouch %}
+{% set params = "?vouch=" + vouch + "&service=" + service + "&serviceName=" + serviceName %}
+{% elif service %}
+{% set params = "?service=" + service + "&serviceName=" + serviceName %}
+{% endif %}
+
+{% block content %}
+<div class="first-item">
+  <form>
+    <div class="form-group">
+      <fieldset class="inline">
+
+        {% if serviceName %}
+        <span class="section-header">{{ serviceName }}</span>
+        {% endif %}
+
+        <h1 class="heading-large">Security code</h1>
+
+        <h2 class="heading-xlarge"><legend>Enter security code</legend></h2>
+
+        <p>We've sent your security code to:</p>
+        <p>077** ***333</p>
+        <p>It may take a minute or so to arrive.</p>
+        
+        <div class="form-group">
+          <input autocomplete="off" type="tel" class="form-control" name="code" id="code" value="" class="code">
+        </div>
+
+      </fieldset>
+    </div>
+    <div class="form-group">
+      <a href="/account/dashboard{{ params }}" class="button" id="">Continue</a>
+    </div>
+
+    <details class="" role="group">
+      <summary data-analytics="summary" role="button" aria-controls="details-content-0" aria-expanded="false">
+        <span class="details__summary">I have a different contact number, what should I do?</span>
+      </summary>
+      <div id="details-content-0" aria-hidden="true">
+        <p>You can still <a href="/create-account/create-acc{{ params }}">sign up for an NHS account</a> or</p>
+		    <p>You can contact the follow number XXXX-XXXXXX and update your NHS contact details</p>
+      </div>
+    </details>
+    
+  </form>
+</div>
+
+{% endblock %}
+

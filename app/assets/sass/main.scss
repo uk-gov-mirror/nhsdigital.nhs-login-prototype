@@ -48,10 +48,6 @@
   }
 }
 
-a {
-  text-decoration: none;
-}
-
 // login flow styling
 
 .nhsuk-button.full-width {
@@ -306,4 +302,46 @@ div.heading-confirmation {
 
 #conditional-int-checkbox {
   border-color: #da291c !important;
+}
+
+
+
+
+
+
+
+
+// Styles added to incoporate the PYI prototype: https://nhs-cid.herokuapp.com
+
+
+// Blue instructions card
+.instructions {
+  background-color: $color_nhsuk-blue;
+  color: $color_nhsuk-white;
+}
+
+.instructions {
+  .nhsuk-details__summary,
+  .nhsuk-details__summary:before,
+  .nhsuk-details__text,
+  .nhsuk-hint {
+    border-color: $color_nhsuk-white;
+    color:$color_nhsuk-white;
+  }
+}
+
+
+#iproov-image{
+  width: 100%;
+  display: block;
+}
+
+.loading-container{
+  display:block;
+  min-height: 16em;
+}
+
+img#spinner{
+  max-width: 200px;
+  max-height: 200px;
 }

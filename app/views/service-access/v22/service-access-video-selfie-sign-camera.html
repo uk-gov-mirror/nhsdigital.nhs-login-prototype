@@ -1,0 +1,317 @@
+{% extends '_layouts/_grids/_grid-2-1-hotjar.html' %}
+{% block page_title %}Access {{ serviceName }} - Record a short video{% endblock %}
+
+{% set signedin = 'true' %}
+{% set params = "?service=" + service + "&serviceName=" + serviceName + "&lsId=" + lsId + "&lsAccess=" + lsAccess + "&lsStudy=" + lsStudy + "&devMode=" + devMode + "&returnUrl=" + returnUrl + "&emailAddress=" + emailAddress + "&mobileNum=" + mobileNum + "&idType=" + idType + "&formerror=" + formerror + "&hideBack=" + hideBack + "&hidehead=" + hidehead + "&challenge=" + challenge + "&manual=" + manual + "&uplift=" + uplift %}
+
+{% block extrastyles %}
+
+<style>
+  .video-wrapper { position: relative; margin: 0;}
+  #uploaded-video { outline: 5px solid #f7e214; max-width:100%; height:auto; margin: 0;}
+  #video-overlay2 { position: absolute; width: 100%; height: 100%; z-index: 999; cursor: pointer; margin: 0;}
+  #video-overlay {
+    background-image:url(/images/play-button.png);
+    background-repeat:no-repeat;
+    width:100%;
+    height:100%;
+    position:absolute;
+    left:0%;
+    right:0%;
+    top:0%;
+    bottom:0%;
+    margin:auto;
+    background-size: cover;
+    background-position: center;
+    text-align: center;
+    vertical-align: bottom;
+    cursor: pointer;
+  }
+
+  section {
+    margin: 0 !important;
+  }
+
+</style>
+
+{% endblock %}
+
+
+{% block content %}
+
+
+<div class="first-item">
+
+  <section class="loading-container" id="scan-id-0" style="display:block">
+
+    <h1 id="spinner-heading" style="padding-bottom: 0; display:none;">Uploading your video</h1>
+
+    <div class="bar_container">
+      <div id="main_container">
+        <div id="pbar" class="progress-spinner" data-percent="0">
+          <img src="/images/loader-spinner.svg" width="200px" height="200px" id="spinner" />
+          <div class="ppc-loading">
+            <div class="pcc-percents-wrapper">
+              <span id="spinner-status">Loading</span><span aria-hidden="true">...</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </section>
+
+
+  <section class="" id="scan-id-1" style="display:none">
+    {#
+    {% if mobileOsV === 11.2 and devMode === 'true' %}
+
+    {% import "_partials/_components/_callout.html" as callout %}
+    {{ callout.pattern('','This bit includes one of the extra steps we told you about.','warning') }}
+
+    {% endif %}
+
+    #}
+    
+
+{#    ERROR MESSAGING IN THIS SECTION    #}
+
+{#  <div class="callout callout--error camera-file-format" style="display:block; background-color:#fff0">
+    <h2 class="h3">There is a problem</h2>
+
+          {% if mobileOs === 'Apple Mac' or mobileOs === 'Microsoft Windows' %}
+          {% set instructionlowercase = 'choose a file' %}
+          {% elif mobileOs === 'iPhone' or mobileOs === 'iPad' %}
+          {% if mobileOsV === 11.2 and devMode === 'true' %}
+          {% set instructionlowercase = 'open your Photo Library' %}
+          {% else %}
+          {% set instructionlowercase = 'open camera' %}
+          {% endif %}
+          {% else %}
+          {% if genericButton === 'true' %}
+          {% set instructionlowercase = 'record a video' %}
+          {% else %}
+          {% set instructionlowercase = 'open camcorder' %}
+          {% endif %}
+          {% endif %}
+    
+    <!-- <p>You have taken a photo by mistake. When you click on <em>{{ instructionlowercase }}</em>, pick your video camcorder.</p> -->
+
+    <p>Your video is too short. Record your video again. When you click on <em>{{ instructionlowercase }}</em>, pick your video camcorder.</p>
+
+    <!-- <p>Your video is too long. Record your video again and stop it when you’ve finished telling us the 4 numbers.</p> -->
+
+    <!-- <p>Your video is a file type we cannot accept. When you click on <em>{{ instructionlowercase }}</em>, pick your video camcorder.</p> -->
+
+    <!-- <p>Your file is not a video.</p> -->
+<!--  <p>When you select <em>open camcorder</em>, choose your video camcorder to record a video.</p> -->   
+    <!-- <p>When you select <em>open video camera</em>, make sure you record a video.</p> -->
+
+    </div> #}
+
+    {% if hideBack !== 'true' %}
+    <p><a href="service-access-video-selfie-triage{{ params }}" class="link-back"><i style="font-weight: normal;font-style: normal;">Back</i></a></p>
+    {% endif %}
+
+    <form>
+      <fieldset class="">
+        <legend for="radio-inline-group">
+          <h1 style="padding-bottom: 0;">
+            Get ready to sign your numbers
+          </h1>
+        </legend>
+
+        <p>
+        <ol>
+        <li>Hold your hand up to the camera.</li>
+        <li>Make sure we can see all of your face in the video.</li>
+        <li>Be careful not to cover your face with your hand.</li>
+        <li>Use British Sign Language to sign the numbers:</li>
+        </p>
+        <p class="camera-challenge" style="font-size: 42px;padding-bottom: .5em;">{{ pinCode }}</p>
+        </ol>
+
+        <p>Ask someone to help you record the video if it is easier.</p>
+
+
+
+        <div class="form-group">
+
+          {% if mobileOs === 'Apple Mac' or mobileOs === 'Microsoft Windows' %}
+          {% set instruction = 'Choose a file' %}
+          {% elif mobileOs === 'iPhone' or mobileOs === 'iPad' %}
+          {% if mobileOsV === 11.2 and devMode === 'true' %}
+          {% set instruction = 'Open your Photo Library' %}
+          {% else %}
+          {% set instruction = 'Open camera' %}
+          {% endif %}
+          {% else %}
+          {% if genericButton === 'true' %}
+          {% set instruction = 'Record a video' %}
+          {% else %}
+          {% set instruction = 'Open camcorder' %}
+          {% endif %}
+          {% endif %}
+
+          {% if mobileOs === 'Apple Mac' or mobileOs === 'Microsoft Windows' %}
+          {% set instructionlowercase = 'choose a file' %}
+          {% elif mobileOs === 'iPhone' or mobileOs === 'iPad' %}
+          {% if mobileOsV === 11.2 and devMode === 'true' %}
+          {% set instructionlowercase = 'open your Photo Library' %}
+          {% else %}
+          {% set instructionlowercase = 'open camera' %}
+          {% endif %}
+          {% else %}
+          {% if genericButton === 'true' %}
+          {% set instructionlowercase = 'record a video' %}
+          {% else %}
+          {% set instructionlowercase = 'open camcorder' %}
+          {% endif %}
+          {% endif %}
+
+        <p>When you are ready to record your video, click {{ instructionlowercase }}.</p>
+        <br>
+
+          <label for="short-video" class="camera-button">{{ instruction }}
+            <input type="file" id="short-video" name="video" accept="video/mp4,video/x-m4v,video/*" {% if mobileOsV === 11.2 and devMode === 'true' %} {% else %}capture="environment" {% endif %}>
+          </label>
+
+        </div>
+
+      </fieldset>
+
+    </form>
+
+    {% if devMode === 'true' %}
+    <div style="display: inline-block;background-color: #ffb81c;padding: 0.25em 0.5em;">
+      <small>OS version: {{ mobileOsV }}</small>
+    </div>
+    {% endif %}
+
+  </section>
+
+  <section class="uploader-container" id="scan-id-3" style="display:none">
+
+    <h1 style="padding-bottom: 0;">
+      Uploading your video
+    </h1>
+
+    <div class="bar_container">
+      <div id="main_container">
+        <div id="pbar" class="progress-pie-chart" data-percent="0">
+          <div class="ppc-progress">
+            <div class="ppc-progress-fill"></div>
+          </div>
+          <div class="ppc-percents">
+            <div class="pcc-percents-wrapper">
+              <span>%</span>
+            </div>
+          </div>
+        </div>
+
+        <progress style="display: none" id="progress_bar" value="0" max="100"></progress>
+      </div>
+    </div>
+
+  </section>
+
+  <section class="" id="scan-id-5" style="display:none">
+
+    <h1 style="padding-bottom: 0;">Check your video</h1>
+
+    <p>You need to watch the video before you can continue.</p>
+
+    <div class="reading-width">
+      <div id="scan-video-preview" class="video-wrapper" style="display: inline-block;">
+        <video id="uploaded-video" webkit-playsinline="true" playsinline="true" style="max-width:100%;max-height:400px;" aria-label="Video player displaying your video selfie." src="#" type="video/mp4"></video>
+        <div id="video-overlay" role="button"></div>
+      </div>
+    </div>
+
+
+    <div class="form-group">
+      <p>If you can see all of your face and the numbers <strong>{{ pinCode }}</strong> clearly, click continue.</p>
+
+      <a class="button" disabled="disabled" href="" id="submit-videoSelfie4-button">Continue</a>
+      <br><br>
+      <p>If you cannot see all of your face, or the numbers clearly, then <a href="service-access-video-selfie-sign-camera{{ params }}" id="">record video again</a>.</p>
+    </div>
+
+  </section>
+
+  <section  class="" id="scan-id-7" style="display:none">
+
+    <h1 style="padding-bottom: 0;">There's a problem with your video</h1>
+
+    <p>This could be because of any of the following:</p>
+    <ul>
+      <li>you sent us a photo instead of a video</li>
+      <li>the video is too long (it only needs to be a few seconds)</li>
+      <li>the file is a type we cannot accept</li>
+    </ul>
+
+    <div class="form-group">
+      <a class="button" href="service-access-video-selfie-camera{{ params }}" id="">Record another video</a>
+    </div>
+
+    <p class="small" style="margin-top: 28px;">Reference: CID4013</p>
+
+  </section>
+
+  <section  class="" id="scan-id-8" style="display:none">
+
+    <h1 style="padding-bottom: 0;">Something went wrong</h1>
+
+    <p>We're having technical problems.</p>
+
+    <div class="form-group">
+      <a class="button" href="service-access-video-selfie-camera{{ params }}" id="">Try again</a>
+    </div>
+
+    <div class="callout callout--info" style="margin-top: 28px;">
+      <p>If you keep getting this message, please try again later.</p>
+    </div>
+
+    <p class="small" style="margin-top: 28px;">Reference: CID4012</p>
+
+  </section>
+
+  {# section to show uploading error #}
+  <section class="preview-container" id="scan-id-5" style="display:none">
+
+    <h1 style="padding-bottom: 0;">Something went wrong</h1>
+
+    <div id="nhs-number" class="has-error form-row-error-active">
+      <p>We could not upload your video.</p>
+    </div>
+
+    <div class="form-group">
+      <a class="button" href="" id="submit-photoId-back-button">Try again</a>
+    </div>
+
+    <p class="small" style="margin-top: 28px;">Reference: CID4011</p>
+
+  </section>
+
+  {% if formerror === 'invalid' %}
+  <button id="confirmButton" style="visibility:hidden">Continue</button>
+  {% elif uplift === 'true' %}
+  <button id="continueButton" style="visibility:hidden" onclick="window.location='service-access-nhs-pds-checking{{ params }}';" >Continue</button>
+  {% else %}
+  <button id="continueButton" style="visibility:hidden" onclick="window.location='service-access-nhs{{ params }}';" >Continue</button>
+  {% endif %}
+
+</div>
+
+<script type="text/javascript">
+
+  //show then hide the spinner animation
+  setTimeout(function(){
+    document.getElementById('scan-id-0').style.display = 'none'
+  }, 1500)
+  setTimeout(function(){
+    document.getElementById('scan-id-1').style.display = 'block'
+  }, 1500)
+</script>
+
+{% endblock %}

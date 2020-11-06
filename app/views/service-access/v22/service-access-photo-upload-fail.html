@@ -1,0 +1,29 @@
+{% extends '_layouts/_grids/_grid-2-1-hotjar.html' %}
+{% block page_title %}We are having problems with the scan{% endblock %}
+
+{% set signedin = 'true' %}
+{% set params = "?service=" + service + "&serviceName=" + serviceName + "&emailAddress=" + emailAddress + "&mobileNum=" + mobileNum + "&idType=" + idType + "&formerror=" + formerror + "&hidehead=" + hidehead + "&devMode=" + devMode + "&returnUrl=" + returnUrl + "&genericButton=" + genericButton + "&upload=" + upload + "&manual=" + manual + "&side=back" + "&uplift=" + uplift %}
+
+{% block content %}
+
+
+<div class="first-item">
+
+    <form>
+
+            <h1>We are having problems with the scan</h1>
+          
+            <p>You will need to record a video of your face instead.</p>
+
+            <p>We will tell you what to do on the next page.</p>
+
+            <div class="form-group">
+              <a href="service-access-video-selfie-camera?service=undefined&serviceName=undefined&emailAddress=undefined&mobileNum=undefined&idType=undefined&hidehead=undefined&challenge=undefined&devMode=undefined&returnUrl=undefined&genericButton=undefined&iproovFailReason=undefined&iProovThirdAttempt=undefined&pyiSecondAttempt=undefined" class="button camera-button">Continue to video</a>
+            </div>
+
+
+      </form>
+
+</div>
+
+{% endblock %}

@@ -1,0 +1,77 @@
+{% extends '_layouts/_grids/_grid-2-1-hotjar.html' %}
+{% block page_title %}We are having problems with the scan{% endblock %}
+
+{% set signedin = 'true' %}
+{% set params = "?service=" + service + "&serviceName=" + serviceName + "&lsId=" + lsId + "&lsAccess=" + lsAccess + "&lsStudy=" + lsStudy + "&devMode=" + devMode + "&returnUrl=" + returnUrl + "&emailAddress=" + emailAddress + "&mobileNum=" + mobileNum + "&idType=" + idType + "&formerror=" + formerror + "&hideBack=" + hideBack + "&hidehead=" + hidehead + "&challenge=" + challenge + "&manual=" + manual + "&uplift=" + uplift %}
+
+{% block extrastyles %}
+
+{% endblock %}
+
+
+{% block content %}
+
+
+<div class="first-item">
+
+  <section class="loading-container" id="scan-id-0" style="display:block">
+
+    <h1 id="spinner-heading" style="padding-bottom: 0; display:none;">Uploading your video</h1>
+
+    <div class="bar_container">
+      <div id="main_container">
+        <div id="pbar" class="progress-spinner" data-percent="0">
+          <img src="/images/loader-spinner.svg" width="200px" height="200px" id="spinner" />
+          <div class="ppc-loading">
+            <div class="pcc-percents-wrapper">
+              <span id="spinner-status">Loading</span><span aria-hidden="true">...</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </section>
+
+
+  <section class="" id="scan-id-1" style="display:none">
+
+
+       <form>
+
+            <h1>We are having problems with the scan</h1>
+          
+            <p>You will need to record a video of your face instead.</p>
+
+            <p>We will tell you what to do on the next page.</p>
+
+            <div class="form-group">
+              <a href="service-access-video-selfie-camera{{ params }}&hideBack=true" class="button">Continue to video</a>
+            </div>
+
+
+      </form>
+
+    {% if devMode === 'true' %}
+    <div style="display: inline-block;background-color: #ffb81c;padding: 0.25em 0.5em;">
+      <small>OS version: {{ mobileOsV }}</small>
+    </div>
+    {% endif %}
+
+  </section>
+
+
+</div>
+
+<script type="text/javascript">
+
+  //show then hide the spinner animation
+  setTimeout(function(){
+    document.getElementById('scan-id-0').style.display = 'none'
+  }, 1500)
+  setTimeout(function(){
+    document.getElementById('scan-id-1').style.display = 'block'
+  }, 1500)
+</script>
+
+{% endblock %}

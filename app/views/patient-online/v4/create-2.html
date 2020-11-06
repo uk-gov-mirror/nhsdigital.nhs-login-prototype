@@ -1,0 +1,34 @@
+{% extends '_layouts/_grids/_grid-2-1.html' %}
+{% block page_title %}View your hospital record {{serviceName}}{% endblock %}
+{% set signedin = '' %}
+
+{% block content %}
+
+
+<div class="first-item">
+  <form>
+    <div class="form-group">
+      <fieldset class="">
+      <h3>View your hospital record</h3>
+        <h1><legend>Log in to your NHS account</legend></h1>
+
+        <div class="form-group">
+          <label class="form-label" for="field1">Email</label>
+          <input class="form-control" id="field1" name="field1" type="text">
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="field1">Password</label>
+          <input class="form-control" id="field1" name="field1" type="text">
+        </div>
+
+      </fieldset>
+    </div>
+    <div class="form-group">
+      <a class="button" href="your-medical-record" id="">Log in</a>
+    </div>
+    <p><a href="create-acc">I don't have an NHS account</a></p>
+  </form>
+</div>
+
+{% endblock %}

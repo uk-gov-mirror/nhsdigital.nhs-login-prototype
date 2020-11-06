@@ -1,0 +1,52 @@
+{% extends '_layouts/_grids/_grid-2-1-hotjar.html' %}
+{% block page_title %}Access {{ serviceName }} - What's your NHS number?{% endblock %}
+
+{% set signedin = 'true' %}
+{% set params = "?service=" + service + "&serviceName=" + serviceName + "&emailAddress=" + emailAddress + "&mobileNum=" + mobileNum + "&hidehead=" + hidehead + "&devMode=" + devMode + "&returnUrl=" + returnUrl + "&idType=" + idType + "&manual=" + manual + "&uplift=" + uplift %}
+
+{% block content %}
+
+<div class="first-item">
+
+  <form>
+    <div class="form-group">
+
+      <p><a href="javascript:history.go(-1)" class="link-back">Back</a></p>
+
+      <h1>What's your NHS Number?</h1>
+
+      <div class="form-group">
+        <span class="form-label__hint">Example: 485 777 3456</span>
+        <input class="form-control" id="nhs_number" name="nhs_number" type="number" pattern="[0-9]*">
+      </div>
+
+    </div>
+
+    <details class="" role="group" style="margin-top: 0;">
+      <summary data-analytics="summary" role="button" aria-controls="details-content-0" aria-expanded="true">
+        <span class="details__summary">Where can I find my NHS number?</span>
+      </summary>
+      <div class="callout callout--info callout--friendly" id="details-content-0" aria-hidden="false">
+        <div class="reading-width">
+          <p>You can find your NHS number on any document sent to you by the NHS. This may include:</p>
+          <ul>
+            <li>prescriptions</li>
+            <li>test results</li>
+            <li>hospital referral letters</li>
+            <li>appointment letters</li>
+            <li>your NHS medical card</li>
+          </ul>
+          <p>Ask your GP for help if you can't find your NHS number.</p>
+        </div>
+      </div>
+    </details>
+
+
+    <div class="form-group">
+      <a class="button" href="service-access-nhs-number-dob{{ params }}">Continue</a>
+    </div>
+  </form>
+
+</div>
+
+{% endblock %}

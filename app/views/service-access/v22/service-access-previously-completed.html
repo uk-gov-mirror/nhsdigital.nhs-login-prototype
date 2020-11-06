@@ -1,0 +1,49 @@
+{% extends '_layouts/_grids/_grid-2-1-stacked.html' %}
+{% block page_title %}Access {{ serviceName }} - Sorry - you can not continue{% endblock %}
+
+{% set signedin = 'true' %}
+{% set params = "?service=" + service + "&serviceName=" + serviceName + "&emailAddress=" + emailAddress + "&mobileNum=" + mobileNum + "&hidehead=" + hidehead + "&devMode=" + devMode + "&returnUrl=" + returnUrl + "&uplift=" + uplift %}
+
+{% block content %}
+
+<div class="first-item">
+
+  <!--<h1><legend>Checking your details</legend></h1>-->
+
+  <div class="bar_container" id="scan-id-0">
+    <div id="main_container">
+      <div id="pbar" class="progress-spinner" data-percent="0">
+        <img src="/images/loader-spinner.svg" width="200px" height="200px" id="spinner" />
+        <div class="ppc-loading">
+          <div class="pcc-percents-wrapper">
+            <span id="spinner-status">Please wait&hellip;</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+
+  <!--<p><a href="javascript:history.go(-1)" class="link-back">Back</a></p>-->
+
+  <div class="form-group" id="scan-id-5" style="display:none;">
+    <h1>There was a problem</h1>
+
+    <p>The page you are looking for isn't available.</p>
+
+    <p><a href="/create-account/v21/login-spinner{{ params }}" class="button">Continue</a></p>
+  </div>
+
+</div>
+
+
+<script type="text/javascript">
+  setTimeout(function(){
+    fastSpinner()
+  }, 1000)
+</script>
+
+
+{% endblock %}

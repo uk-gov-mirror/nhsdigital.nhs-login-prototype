@@ -1,0 +1,18 @@
+{% extends '_layouts/_nhsuk_layout.html' %}
+{% block page_title %}Access My Medical Record{% endblock %}
+
+{% block body %}
+
+{% import "_partials/_components/_local-header.html" as localHeader %}
+  {{ localHeader.pattern('Access My Medical Record',' ') }}
+
+<p>Use this service to:</p>
+<ul>
+  <li>Get access to your medical record</li>
+  <!--<li>Remove token access for a patient's identity</li>-->
+</ul>
+
+<a href="create-2" class="button">Start</a>
+
+{% endblock %}
+{% block rightcol %}{% endblock %}

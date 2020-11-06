@@ -1,0 +1,30 @@
+{% extends '_layouts/_grids/_grid-2-1.html' %}
+{% block page_title %}Access your medical record {{serviceName}}{% endblock %}
+{% set signedin = '' %}
+
+{% block content %}
+
+<div class="first-item">
+  <form>
+    <div class="form-group">
+      <fieldset class="">
+      <h3>Access your medical record</h3>
+        <h1><legend>Find my GP Online - Enter your GP surgery details</legend></h1>
+        <div class="form-group">
+          <label class="form-label" for="findGP">Surgery or GP name</label>
+          <input class="form-control" id="findGP" name="findGP" type="text">
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="findGP">Postcode</label>
+          <input class="form-control" id="findGP" name="findGP" type="text">
+        </div>
+
+    </div>
+    <div class="form-group">
+      <a class="button" href="gp-results" id="">Search</a>
+    </div>
+  </form>
+</div>
+
+{% endblock %}

@@ -1,0 +1,77 @@
+{% extends '_layouts/_grids/_grid-2-1-hotjar.html' %}
+{% block page_title %}It is taking too long to prepare the scan{% endblock %}
+
+{% set signedin = 'true' %}
+{% set params = "?service=" + service + "&serviceName=" + serviceName + "&emailAddress=" + emailAddress + "&mobileNum=" + mobileNum + "&idType=" + idType + "&hidehead=" + hidehead + "&challenge=" + challenge + "&devMode=" + devMode + "&returnUrl=" + returnUrl + "&genericButton=" + genericButton + "&iproovEnrolFailReason=" + iproovEnrolFailReason + "&iProovThirdAttempt=" + iProovThirdAttempt + "&pyiSecondAttempt=" + pyiSecondAttempt + "&uplift=" + uplift %}
+
+{% block content %}
+
+<div class="first-item">
+
+  <section class="" id="scan-id-1">
+
+      <form>
+
+          {% if iproovEnrolFailReason === "500" or iproovEnrolFailReason === "tps" %}
+
+            <h1>It is taking too long to prepare the scan</h1>
+
+            <p>This is because lots of people are using the service.</p>
+
+          <form style="margin: 32px 0 16px;">
+              <div class="form-group">
+                  <fieldset>
+
+                      <legend>
+                          <h2 class="h3">Choose what you want to do</h2>
+                      </legend>
+
+                      <div class="selection-button-radio-inline" style="margin-top: 32px;">
+                          <div class="multiple-choice">
+                              <input id="radio-inline-1" type="radio" name="radio-inline-group" value="service-access-iproov-enrolment{{ params }}">
+                              <label for="radio-inline-1" class="block-label" style="position: static;">Try the scan again now</label>
+                          </div>
+                      </div>
+                      <div class="selection-button-radio-inline" style="margin-top: 0px;">
+                          <div class="multiple-choice">
+                              <input id="radio-inline-2" type="radio" name="radio-inline-group" value="service-access-iproov-later{{ params }}">
+                              <label for="radio-inline-2" class="block-label" style="position: static;">Come back later</label>
+                          </div>
+                      </div>
+                      <div class="selection-button-radio-inline" style="margin-top: 0px;">
+                          <div class="multiple-choice">
+                              <input id="radio-inline-3" type="radio" name="radio-inline-group" value="service-access-video-selfie-camera{{ params }}&hideBack=true">
+                              <label for="radio-inline-3" class="block-label" style="position: static;">Record a short video of my face, instead of the scan</label>
+                          </div>
+                      </div>
+
+                  </fieldset>
+              </div>
+
+              <div class="form-group">
+                  <a class="button" href="#" id="continue">Continue</a>
+              </div>
+
+          </form>
+
+          {% elif iproovEnrolFailReason === "face" %}
+
+            <h1>There's a problem</h1>
+
+            <p>There is an issue with the photo of your I.D.</p>
+
+            <p>You need to send another photo.</p>
+
+            <div class="form-group">
+              <a href="service-access-photo-id-camera{{ params }}" class="button camera-button">Send another photo of your I.D.</a>
+            </div>
+
+          {% endif %}
+
+      </form>
+
+  </section>
+
+</div>
+
+{% endblock %}

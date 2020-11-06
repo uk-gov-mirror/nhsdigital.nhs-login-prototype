@@ -1,0 +1,31 @@
+{% extends '_layouts/_grids/_grid-2-1-hotjar.html' %}
+{% block page_title %}Access {{ serviceName }} - Something went wrong{% endblock %}
+
+{% set signedin = 'true' %}
+{% set params = "?service=" + service + "&serviceName=" + serviceName + "&emailAddress=" + emailAddress + "&mobileNum=" + mobileNum + "&idType=" + idType + "&hidehead=" + hidehead + "&challenge=" + challenge + "&devMode=" + devMode + "&returnUrl=" + returnUrl + "&genericButton=" + genericButton + "&iproovEnrolFailReason=" + iproovEnrolFailReason + "&iProovThirdAttempt=" + iProovThirdAttempt + "&pyiSecondAttempt=" + pyiSecondAttempt + "&uplift=" + uplift %}
+
+{% block content %}
+
+<div class="first-item">
+
+  <section class="" id="scan-id-1">
+
+      <p><a href="service-access-iproov-failure-enrolment{{ params }}" class="link-back"><i style="font-weight: normal;font-style: normal;">Back</i></a></p>
+
+      <form>
+
+          <h1>Come back later</h1>
+
+          <p>[Want data to find out if there are quieter / busier times]</p>
+
+          <p>[Advise user that they can leave the service and come back later to try the scan again.</p>
+
+          <p>Advise them they will need to take/upload another photo of their I.D. because we cannot save their information.] </p>
+
+      </form>
+
+  </section>
+
+</div>
+
+{% endblock %}

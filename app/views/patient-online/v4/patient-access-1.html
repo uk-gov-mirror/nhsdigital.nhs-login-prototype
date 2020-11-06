@@ -1,0 +1,43 @@
+{% extends '_layouts/_grids/_grid-2-1.html' %}
+{% block page_title %}View your hospital record {{serviceName}}{% endblock %}
+{% set signedin = '' %}
+
+{# work out where to send users #}
+{% if vouch %}
+{% set params = "?vouch=" + vouch %}
+{% elif service %}
+{% set params = "?service=" + service + "&serviceName=" + serviceName %}
+{% endif %}
+
+{% block content %}
+
+<div class="first-item">
+  <form>
+    <div class="form-group">
+      <fieldset class="">
+      {% if serviceName %}
+        <span class="section-header">{{ serviceName }}</span>
+        {% endif %}
+        <h1><legend>Log in using your Patient Access details</legend></h1>
+        
+        <div class="form-group">
+          <label class="form-label" for="field1">User ID</label>
+          <input class="form-control" id="field1" name="field1" type="text">
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="field2">Password</label>
+          <input class="form-control" id="field2" name="field2" type="text">
+        </div>
+
+      </fieldset>
+
+    </div>
+    <div class="form-group">
+      <a class="button" href="two-step-code{{ params }}" id="">Log in</a>
+    </div>
+
+    <p><a href="patient-access-2{{ params }}">I can't remember my Patient Access login details</a></p>
+  </form>
+</div>
+
+{% endblock %}

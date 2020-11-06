@@ -1,0 +1,57 @@
+{% extends '_layouts/_grids/_grid-2-1.html' %}
+{% block page_title %}View your hospital record {{serviceName}}{% endblock %}
+{% set signedin = '' %}
+
+{% block content %}
+
+<div class="first-item">
+<form>
+	<div class="form-group">
+		<h3>View your hospital record</h3>
+		<h1><legend>Log in or sign up</legend></h1>
+
+		<a href="create-acc" class="button button--email" style="padding: 12px; text-align: left; color: white">
+			<div style="width: calc(100% - 116px); float: left; margin-top:0;">
+			  	<p style="font-size: 16px; line-height: 22px" class="font-xsmall">Sign up with</p>
+				<h3 style="margin-top: 0;">Email</h3>
+			</div>
+			<img style="width: 100px; float:right; margin-top:0;" src="/images/nhs-logotype-white.svg" width="54" height="54" />
+		</a>
+		<p>Already have an account? <a href="create-2">Login</a></p>
+		<hr />
+		<p>If you are registered with your GP surgery for online services</p>
+		<a href="systm-one-1" class="button button--systm-one" style="padding: 12px; text-align: left;">
+			<div style="width: calc(100% - 66px);margin-top:0;">
+			  	<p style="font-size: 16px; line-height: 22px" class="font-xsmall">Login with</p>
+			</div>
+			<img style="margin-top:0; height: 40px; float: right" src="/images/SystmOnline_logo-trans.png" />
+		</a>
+		<a href="patient-access-1" class="button button--patient-access" style="padding: 12px; text-align: left; color: white">
+			<div style="width: calc(100% - 66px); margin-top:0;">
+			  	<p style="font-size: 16px; line-height: 22px" class="font-xsmall">Login with</p>
+			</div>
+			<img style="margin-top:0; height: 40px; float: right" src="/images/patient-access-logo-trans.png" />
+		</a>
+		<p><a href="gp-systems">Login with other GP online services</a></p>
+		<hr />
+		<a href="https://nhs-cid-verify.herokuapp.com/intro{{ params }}" class="button button--verify" style="padding: 12px; text-align: left">
+			<div style="width: calc(100% - 66px); float: left; margin-top:0;">
+			  	<p style="font-size: 16px; line-height: 22px" class="font-xsmall">Continue with</p>
+				<h3 style="margin-top: 0;">GOV.UK Verify</h3>
+			</div>
+			<img style="width: 50px; float:right; margin-top:0;" src="/images/logo-verify.png" width="54" height="54" />
+		</a>
+		<details class="" role="group">
+      <summary data-analytics="summary" role="button" aria-controls="details-content-0" aria-expanded="false">
+        <span class="details__summary">What is GOV.UK Verify?</span>
+      </summary>
+      <div id="details-content-0" aria-hidden="true">
+        <p>GOV.UK Verify is an identity service that allows you to login where ever you see the GOV.UK Verify logo.</p>
+		<p>You can sign up for a GOV.UK Verify account now or login to view your hospital record using your GOV.UK Verify credentials</p>
+      </div>
+    </details>
+	</div>
+</form>
+</div>
+
+{% endblock %}

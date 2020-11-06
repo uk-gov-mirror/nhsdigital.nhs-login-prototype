@@ -1,0 +1,41 @@
+{% extends '_layouts/_grids/_grid-2-1-hotjar.html' %}
+{% block page_title %}Access {{ serviceName }} - Check your text messages{% endblock %}
+
+{% set signedin = 'true' %}
+{% set params = "?service=" + service + "&serviceName=" + serviceName + "&emailAddress=" + emailAddress + "&mobileNum=" + mobileNum + "&idType=" + idType + "&hidehead=" + hidehead + "&devMode=" + devMode + "&returnUrl=" + returnUrl + "&uplift=" + uplift %}
+
+{% block content %}
+
+
+<div class="first-item">
+
+  <p><a href="javascript:history.go(-1)" class="link-back">Back</a></p>
+
+  <h1 style="padding-bottom: 0;">
+    Check your text messages
+  </h1>
+
+  <p>Click on the link we sent to {{ mobileNum|default("*******2645", true) }}.</p>
+  <p>It might take a few minutes to arrive.</p>
+
+
+  {% if devMode === "true" %}
+  <details class="dev-mode" role="group" >
+    <summary data-analytics="summary" role="button" aria-controls="details-content-0" aria-expanded="true">
+      <span class="details__summary">Continue with testing scenario</span>
+    </summary>
+    <div class="callout callout--info callout--friendly" id="details-content-0" aria-hidden="false">
+      <div class="reading-width">
+        <ol>
+          <li><a href="service-access-switchtomobile-fail-timeout{{ params }}">SMS link was clicked beyond 10 minute limited</a></li>
+          <li><a href="service-access-switchtomobile-fail-malformed{{ params }}">SMS link was malformed</a></li>
+        </ol>
+      </div>
+    </div>
+  </details>
+  {% endif %}
+
+
+</div>
+
+{% endblock %}

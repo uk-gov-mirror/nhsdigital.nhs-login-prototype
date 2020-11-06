@@ -1,0 +1,41 @@
+{% extends '_layouts/_grids/_grid-2-1-stacked.html' %}
+{% block page_title %}Sign in using your GP Online letter or details {{serviceName}}{% endblock %}
+{% set signedin = '' %}
+
+{% block content %}
+
+<h3>View your hospital record</h3>
+
+<h1><legend>Sign in using your GP Online letter or details</legend></h1>
+
+<p>In order to sign in using GP Online you will need either the letter that you used to register for GP Online or your GP Online sign in details</p>
+
+{% endblock %}
+{% block rightcol %}{% endblock %}
+
+{% block leftHalf %}
+<div style="border-right: 3px solid #dddddd; padding-right: 15px;">
+	<h3>GP Online Letter</h3>
+	<p>Select this option if you:</p>
+	<ul>
+		<li style="margin-left: 32px">have the letter and registered using it</li>
+		<li style="margin-left: 32px">it contains information such as Linkage Key/Access ID</li>
+	</ul>
+	<a href="gp-signin-linkage-key" class="button">Continue with GP Online Letter</a>
+  <p><a href="gp-letter">What does the letter look like?</a></p>
+</div>
+{% endblock %}
+
+{% block rightHalf %}
+<div>
+	<h3>GP Online Details</h3>
+  <p>Select this option if you:</p>
+  <ul>
+  <li>use Patient Access, Evergreen Life, Patient Knows Best, SystemOnline, Wiggly Amps, Patient Online, DIMEC, iPlato or ECHO</li>
+  	<li>know your sign in details for your GP Online service</li>
+
+  </ul>
+	<a href="gp-systems" class="button">Continue with GP Online Details</a>
+	<!--<p><img src="/images/verify.png" alt="GOV UK Verify"></p>-->
+</div>
+{% endblock %}

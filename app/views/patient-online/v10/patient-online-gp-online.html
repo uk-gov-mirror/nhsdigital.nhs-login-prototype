@@ -1,0 +1,54 @@
+{% extends '_layouts/_grids/_grid-2-1-hotjar.html' %}
+{% block page_title %}View your medical record {{serviceName}}{% endblock %}
+
+{% set params = "?serviceName=" + serviceName + "&service=" + service + "&lsId=" + lsId + "&lsAccess=" + lsAccess + "&lsStudy=" + lsStudy + "&system=" + system + "&hidehead=" + hidehead + "&surgery=" + surgery + "&practiceID=" + practiceID %}
+
+{% block content %}
+<link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet">
+
+<div class="first-item">
+  <form>
+    <div class="form-group">
+      <p><a href="javascript:history.go(-1)" class="link-back">Back</a></p>
+      <fieldset class="">
+        <h1><legend>Are you registered with {{surgery}} to do either of the following?</legend></h1>
+        <ul>
+          <li>book an appointment with your doctor's surgery online</li>
+          <li>order a repeat prescription from your doctor's surgery online</li>
+        </ul>
+        <div>
+          <label class="block-label selection-button-radio" for="radio-inline-1">
+            <input id="radio-inline-1" type="radio" name="radio-inline-group" value="patient-online-details{{ params }}">
+            Yes
+          </label>
+        </div>
+        <div>
+          <label class="block-label selection-button-radio" for="radio-inline-2">
+            <input id="radio-inline-2" type="radio" name="radio-inline-group" value="patient-online-british-id{{ params }}&poluser=true">
+            No
+          </label>
+        </div>
+        <div>
+          <label class="block-label selection-button-radio" for="radio-inline-3">
+            <input id="radio-inline-3" type="radio" name="radio-inline-group" value="patient-online-british-id{{ params }}&poluser=true">
+            Don't know
+          </label>
+        </div>
+
+      </fieldset>
+    </div>
+    <div class="form-group">
+      <a class="button" href="#" id="continue">Continue</a>
+    </div>
+    <!--<p><a href="/service-access/mvp/service-access-pol-3{{ params }}">I want to <span style="text-transform: lowercase">{{ serviceName }}</span> another way</a></p>-->
+  </form>
+</div>
+
+
+
+
+
+
+
+
+{% endblock %}

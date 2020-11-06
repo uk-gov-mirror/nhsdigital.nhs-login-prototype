@@ -1,0 +1,47 @@
+{% extends '_layouts/_grids/_grid-2-1.html' %}
+{% block page_title %}View your hospital record {{serviceName}}{% endblock %}
+{% set signedin = '' %}
+
+{% block content %}
+
+<div class="first-item">
+  <form>
+    <div class="form-group">
+      <fieldset class="">
+      
+        <h1><legend>Which GP website/app do you use?</legend></h1>
+        <div>
+          <label class="block-label selection-button-radio" for="radio-inline-1">
+          <input id="radio-inline-1" type="radio" name="radio-inline-group" value="patient-access-1" />
+          Patient Access
+            {% import "_partials/_components/_system.html" as callout %}
+            {{ callout.pattern('Patient Access','~/../../images/Patient-Access-logo-system.png','Extra info goes here') }}
+         </label>
+        </div>
+
+        <div>
+        <label class="block-label selection-button-radio" for="radio-inline-2">
+          <input id="radio-inline-2" type="radio" name="radio-inline-group" value="systm-one-1" />
+            SystmOnline
+            {% import "_partials/_components/_system.html" as callout %}
+            {{ callout.pattern('SystmOnline','https://www.nhs.uk/NHSEngland/online-services/PublishingImages/logos/systmonline-logo.png','Extra info goes here') }}
+         </label>
+        </div>
+
+        <div>
+          <label class="block-label selection-button-radio" for="radio-inline-3">
+          <input id="radio-inline-3" type="radio" name="radio-inline-group" value="evergreen-1" />
+          Evergreen
+            {% import "_partials/_components/_system.html" as callout %}
+            {{ callout.pattern('Evergreen','https://www.nhs.uk/NHSEngland/online-services/PublishingImages/logos/evergreen-life-logo.png','Extra info goes here') }}
+         </label>
+        </div>
+    </div>
+    <div class="form-group">
+      <a class="button" href="#" id="continue">Continue</a>
+    </div>
+    <p><a href="gp-lookup">I'm not sure, help me find it</a></p>
+  </form>
+</div>
+
+{% endblock %}

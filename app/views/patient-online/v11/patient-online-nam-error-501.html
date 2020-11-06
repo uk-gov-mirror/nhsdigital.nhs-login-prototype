@@ -1,0 +1,19 @@
+{% extends '_layouts/_grids/_grid-2-1-hotjar.html' %}
+{% block page_title %}Access {{ serviceName }} - Sorry - we cannot create your account{% endblock %}
+
+{% set params = "?serviceName=" + serviceName + "&service=" + service + "&lsId=" + lsId + "&lsAccess=" + lsAccess + "&lsStudy=" + lsStudy + "&hidehead=" + hidehead + "&devMode=" + devMode + "&returnUrl=" + returnUrl %}
+
+{% block content %}
+
+<div class="first-item">
+    <h1>Sorry - we cannot connect you to your GP surgery</h1>
+
+    <p>One or more of the details that you entered might be wrong.</p>
+    <p>Contact your GP surgery and ask them for your registration details for their online booking system. These details are sometimes called patient online registration details.</p>
+    <p>When you have your details, log in and try again.</p>
+
+    <p class="small"></p>Reference: CID7006
+
+</div>
+
+{% endblock %}

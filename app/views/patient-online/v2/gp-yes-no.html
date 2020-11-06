@@ -1,0 +1,44 @@
+{% extends '_layouts/_grids/_grid-2-1.html' %}
+{% block page_title %}Access your medical record {{serviceName}}{% endblock %}
+{% set signedin = '' %}
+
+{% block content %}
+
+<div class="first-item">
+  <form>
+    <div class="form-group">
+      <fieldset class="">
+      <h3>Access your medical record</h3>
+        <h1><legend>Can you sign in using GP Online?</legend></h1>
+
+        <div class="callout callout--info">
+          <h3>What is GP Online?</h3>
+          <ul>
+            <li>Patient Access, Evergreen Life, Patient Knows Best, SystemOnline, Wiggly Amps, Patient Online, DIMEC, iPlato or ECHO</li>
+            <li>lets you book appointments</li>
+            <li>allows you to view your record</li>
+          </ul>
+        </div>
+        <div>
+          <label class="block-label selection-button-radio" for="radio-inline-1">
+            <input id="radio-inline-1" type="radio" name="radio-inline-group" value="gp-choose">
+            Yes
+          </label>
+        </div>
+
+        <div>
+          <label class="block-label selection-button-radio" for="radio-inline-2">
+            <input id="radio-inline-2" type="radio" name="radio-inline-group" value="create-acc">
+            No
+          </label>
+        </div>
+
+      </fieldset>
+    </div>
+    <div class="form-group">
+      <a class="button" href="#" id="continue">Continue</a>
+    </div>
+  </form>
+</div>
+
+{% endblock %}

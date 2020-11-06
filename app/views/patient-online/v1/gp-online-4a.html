@@ -1,0 +1,37 @@
+{% extends '_layouts/_nhsuk_layout.html' %}
+{% block page_title %}Offline Vouching Identity Service{{serviceName}}{% endblock %}
+
+{% block body %}
+
+<div class="first-item">
+  <form>
+    <div class="form-group">
+      <fieldset class="">
+      <h3>Access NHS Online Services</h3>
+        <h1><legend>Which GP Online website/app do you use?</legend></h1>
+        <div>
+          <label class="block-label selection-button-radio" for="radio-inline-1">
+          <input id="radio-inline-1" type="radio" name="radio-inline-group" value="patient-access-1" />
+          Evergreen
+            {% import "_partials/_components/_system.html" as callout %}
+            {{ callout.pattern('Patient Access','https://www.nhs.uk/NHSEngland/online-services/PublishingImages/logos/evergreen-life-logo.png','Extra info goes here') }}
+         </label>
+        </div>
+
+        <div>
+        <label class="block-label selection-button-radio" for="radio-inline-2">
+          <input id="radio-inline-2" type="radio" name="radio-inline-group" value="systm-one-1" />
+            SystmOnline
+            {% import "_partials/_components/_system.html" as callout %}
+            {{ callout.pattern('SystMOne','https://www.nhs.uk/NHSEngland/online-services/PublishingImages/logos/systmonline-logo.png','Extra info goes here') }}
+         </label>
+        </div>
+    </div>
+    <div class="form-group">
+      <a class="button" href="#" id="continue">Continue</a>
+    </div>
+    <a href="gp-1b">I'm not sure, help me find it</a>
+  </form>
+</div>
+
+{% endblock %}

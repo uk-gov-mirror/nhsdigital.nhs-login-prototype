@@ -1,0 +1,61 @@
+{% extends '_layouts/_grids/_grid-2-1-hotjar.html' %}
+{% block page_title %}Access {{ serviceName }} - Instructions to record a short video{% endblock %}
+
+{% set signedin = 'true' %}
+{% set params = "?service=" + service + "&serviceName=" + serviceName + "&emailAddress=" + emailAddress + "&mobileNum=" + mobileNum + "&idType=" + idType + "&hidehead=" + hidehead + "&devMode=" + devMode + "&returnUrl=" + returnUrl + "&genericButton=" + genericButton + "&uplift=" + uplift %}
+
+{% block content %}
+
+<div class="first-item">
+
+  <section class="" id="scan-id-1">
+
+    <!--<p><a class="" href="service-access-video-selfie{{ params }}">Go back</a></p>-->
+
+    <form>
+      <fieldset class="">
+        <legend for="radio-inline-group">
+          <h1 style="padding-bottom: 0;">
+            Instructions
+          </h1>
+        </legend>
+
+        <p>To ensure someone can't pretend to be you:</p>
+        <ul class="list list-bullet">
+          <li>you will need to film yourself</li>
+          <li>you will need to perform a simple action that involves speaking out loud</li>
+        </ul>
+        <div class="form-group">
+
+          <script type="application/javascript">
+            if(window.MediaRecorder !== undefined) {
+              document.write('<a href="service-access-iproov{{ params }}" class="button camera-button">Continue</a>')
+            } else {
+              document.write('<a href="service-access-iproov{{ params }}" class="button camera-button">Continue</a>')
+            }
+          </script>
+
+        </div>
+
+      </fieldset>
+
+    </form>
+
+    <details class="" role="group">
+      <summary data-analytics="summary" role="button" aria-controls="details-content-0" aria-expanded="true">
+        <span class="details__summary">What will happen to the video?</span>
+      </summary>
+
+      <div id="details-content-0" aria-hidden="false" class="callout callout--info callout--friendly">
+        <div class="reading-width">
+          <p>The video clip will be held securely on our server and used only for the purpose of verifying your identity. When the identity check is complete the video clip will be securely deleted.</p>
+        </div>
+      </div>
+
+    </details>
+
+  </section>
+
+</div>
+
+{% endblock %}

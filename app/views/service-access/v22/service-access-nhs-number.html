@@ -1,0 +1,66 @@
+{% extends '_layouts/_grids/_grid-2-1-hotjar.html' %}
+{% block page_title %}Access {{ serviceName }} - Do you know your NHS number?{% endblock %}
+
+{% set signedin = 'true' %}
+{% set params = "?service=" + service + "&serviceName=" + serviceName + "&emailAddress=" + emailAddress + "&mobileNum=" + mobileNum + "&hidehead=" + hidehead + "&devMode=" + devMode + "&returnUrl=" + returnUrl + "&idType=" + idType + "&manual=" + manual + "&uplift=" + uplift %}
+
+{% block content %}
+
+<div class="first-item">
+
+  <p><a href="javascript:history.go(-1)" class="link-back">Back</a></p>
+
+  <form>
+    <div class="form-group">
+      <fieldset>
+
+        <legend>
+          <h1 class="">
+            Do you know your NHS number?
+          </h1>
+        </legend>
+
+        <details class="" role="group" style="margin-top: 0;">
+          <summary data-analytics="summary" role="button" aria-controls="details-content-0" aria-expanded="true">
+            <span class="details__summary">How to find your NHS number</span>
+          </summary>
+          <div class="callout callout--info callout--friendly" id="details-content-0" aria-hidden="false">
+            <div class="reading-width">
+              <p>Your NHS Number is a 10 digit number, like 485 777 3456.</p>
+              <p>You can find it on any document that the NHS has sent to you, such as:</p>
+              <ul>
+                <li>prescriptions</li>
+                <li>test results</li>
+                <li>hospital referral letters</li>
+                <li>appointment letters</li>
+                <li>your NHS medical card</li>
+              </ul>
+            </div>
+          </div>
+        </details>
+
+        <div class="selection-button-radio-inline" style="margin-top: 32px;">
+          <div class="multiple-choice" data-target="nhs-yes">
+            <input id="radio-inline-1" type="radio" name="radio-inline-group" value="service-access-nhs-number-num{{ params }}">
+            <label for="radio-inline-1" class="block-label" style="position: static;">Yes</label>
+          </div>
+        </div>
+        <div class="selection-button-radio-inline" style="margin-top: 0px;">
+          <div class="multiple-choice" data-target="nhs-no">
+            <input id="radio-inline-2" type="radio" name="radio-inline-group" value="service-access-nhs-number-demographics-name{{ params }}">
+            <label for="radio-inline-2"class="block-label" style="position: static;">No</label>
+          </div>
+        </div>
+
+      </fieldset>
+    </div>
+
+    <div class="form-group">
+      <a class="button" href="#" id="continue">Continue</a>
+    </div>
+
+  </form>
+
+</div>
+
+{% endblock %}

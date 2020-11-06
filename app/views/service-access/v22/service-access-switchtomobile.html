@@ -1,0 +1,36 @@
+{% extends '_layouts/_grids/_grid-2-1-hotjar.html' %}
+{% block page_title %}You'll need to open another web page{% endblock %}
+
+{% set signedin = 'true' %}
+{% set params = "?service=" + service + "&serviceName=" + serviceName + "&emailAddress=" + emailAddress + "&mobileNum=" + mobileNum + "&idType=" + idType + "&hidehead=" + hidehead + "&devMode=" + devMode + "&returnUrl=" + returnUrl + "&uplift=" + uplift %}
+
+{% block content %}
+
+
+<div class="first-item">
+
+  <p><a href="javascript:history.go(-1)" class="link-back">Back</a></p>
+
+
+  <form action="service-access-switchtomobile{{ params }}" method="POST">
+      <fieldset class="">
+        <legend for="radio-inline-group">
+          <h1 style="padding-bottom: 0;">
+            We need to send you a link so you can continue
+          </h1>
+        </legend>
+
+        <p>This is so you can use your phone's camera for the next steps.</p>
+        <p>We will send a link to {{ mobileNum|default("*******2645", true) }}. Click on the link and the web page will open.</p>
+
+        <div class="form-group">
+          <button class="button">Send link</button>
+        </div>
+
+      </fieldset>
+
+    </form>
+
+</div>
+
+{% endblock %}

@@ -1,0 +1,18 @@
+{% extends '_layouts/_nhsuk_layout.html' %}
+{% block page_title %}Your Hospital Results{% endblock %}
+
+{% block body %}
+
+{% import "_partials/_components/_local-header.html" as localHeader %}
+  {{ localHeader.pattern('Your hospital results',' ') }}
+
+<h1>Welcome to your hospital results</h1>
+<ul>
+  <li style="margin-left: 32px"><a href="#">Hospital results</a></li>
+  <li style="margin-left: 32px"><a href="#">Blood tests</a></li>
+</ul>
+
+<a href="create-1" class="button">Start</a>
+
+{% endblock %}
+{% block rightcol %}{% endblock %}

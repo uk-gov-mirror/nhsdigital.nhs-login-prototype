@@ -1,0 +1,69 @@
+{% extends '_layouts/_grids/_grid-2-1-nhsone.html' %}
+{% block page_title %}View your hospital record {{serviceName}}{% endblock %}
+
+{% set params = "?serviceName=" + serviceName + "&service=" + service + "&hidehead=" + hidehead %}
+
+
+
+
+
+{% block content %}
+
+
+{% if emptysearch == "true" %}
+{% import "_partials/_components/_callout.html" as callout %}
+{{ callout.pattern('','Enter GP surgery name, postcode or both.','warning') }}
+<br>
+{% endif %}
+
+<div class="first-item">
+  <form action="patient-online-gp-lookup{{ params }}" method="POST">
+    <div class="form-group">
+      <p><a href="javascript:history.go(-1)" class="link-back">Back</a></p>
+      <fieldset class="">
+        <h1><legend>Find your GP surgery</legend></h1>
+        <div class="form-group">
+          <label class="form-label" for="gpName">Enter your GP surgery's name</label>
+          <input class="form-control" id="gpName" name="gpName" type="text">
+        </div>
+
+        <style>
+
+        .test {
+          width: 75%;
+          text-align: center;
+          border-bottom: 1px solid #000;
+          line-height: 0.1em;
+          margin: 10px 0 20px;
+        }
+
+        .test span {
+           background:#fff;
+           padding:0 10px;
+        }
+
+        @media screen and (max-width: 499px) {
+          .test {
+            width: 100%;
+            margin-top: 24px;
+          }
+        }
+
+        </style>
+
+        <p class="test"><span>or</span></p>
+
+        <div class="form-group">
+          <label class="form-label" for="gpPostcode">Enter a postcode</label>
+          <input class="form-control" id="gpPostcode" name="gpPostcode" type="text">
+        </div>
+    </div>
+
+
+    <div class="form-group">
+      <button class="button" href="patient-online-gp-lookup{{ params }}">Search</button>
+    </div>
+  </form>
+</div>
+
+{% endblock %}

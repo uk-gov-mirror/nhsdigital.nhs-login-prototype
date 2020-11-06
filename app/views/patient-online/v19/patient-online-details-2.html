@@ -1,0 +1,59 @@
+{% extends '_layouts/_grids/_grid-1-hotjar.html' %}
+{% block page_title %}We need to connect your NHS login to your GP surgery{% endblock %}
+
+{% set params = "?serviceName=" + serviceName + "&service=" + service + "&lsId=" + lsId + "&lsAccess=" + lsAccess + "&lsStudy=" + lsStudy + "&system=" + system + "&mobileNum=" + mobileNum + "&hidehead=" + hidehead + "&devMode=" + devMode + "&returnUrl=" + returnUrl + "&surgery=" + surgery + "&practiceID=" + practiceID + "&manual=" + manual %}
+
+{% block content %}
+
+<div class="first-item">
+
+  {% if hideBack !== 'true' %}
+
+  <p><a href="patient-online-details{{ params }}" class="link-back"><i style="font-weight: normal;font-style: normal;">Back to:</i> Do you use your GP surgery's online services</a></p>
+
+  {% endif %}
+
+
+  <form>
+    <div class="form-group">
+
+      <fieldset class="">
+
+        <div class="reading-width">
+
+        <legend for="radio-inline-group">
+          <h1>
+            Do you have the following 3 registration details for the online services you use?
+          </h1>
+        </legend>
+
+          <ul>
+            <li>Linkage Key (could be called Passphrase)</li>
+            <li>O.D.S. Code (could be called Organisation Code or Practice I.D.)</li>
+            <li>Account I.D.</li>
+          </ul>
+
+          <p>You might have been given these details when you registered.</p>
+
+        <label class="block-label selection-button-radio" for="radio-inline-1" style="margin-top: 32px;">
+          <input id="radio-inline-1" type="radio" name="radio-inline-group" value="patient-online-linkage-key{{ params }}&poluser=true">
+          Yes - I have all 3 details
+        </label>
+        <label class="block-label selection-button-radio" for="radio-inline-2">
+          <input id="radio-inline-2" type="radio" name="radio-inline-group" value="/service-access/v19/service-access-offline-retrieve{{ params }}">
+          No - I do not have all 3 details
+        </label>
+        <label class="block-label selection-button-radio" for="radio-inline-3">
+          <input id="radio-inline-3" type="radio" name="radio-inline-group" value="/service-access/v19/service-access-offline-retrieve{{ params }}">
+          I don't know
+        </label>
+
+      </fieldset>
+    </div>
+    <div class="form-group">
+      <a class="button" href="#" id="continue">Continue</a>
+    </div>
+
+  </form>
+</div>
+{% endblock %}

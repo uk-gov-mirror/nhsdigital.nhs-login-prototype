@@ -1,0 +1,48 @@
+{% extends '_layouts/_grids/_grid-2-1-hotjar.html' %}
+{% block page_title %}We cannot connect your NHS login to your GP surgery{% endblock %}
+
+{% set params = "?service=" + service + "&serviceName=" + serviceName + "&emailAddress=" + emailAddress + "&mobileNum=" + mobileNum + "&hidehead=" + hidehead + "&devMode=" + devMode + "&returnUrl=" + returnUrl + "&result=" + result + "&reason=" + reason + "&pyiuser=true" + "&uplift=" + uplift %}
+
+{% block content %}
+
+<div class="first-item">
+    <h1>There is a problem with your NHS login</h1>
+
+    <p>We cannot connect your NHS login to your GP surgery. The registration details you gave us for your GP surgery's online services are not valid anymore.</p>
+
+    <p>This could be because either:</p>
+
+    <ul>
+        <li>your GP surgery has changed their details</li>
+        <li>you have registered with a different GP surgery</li>
+    </ul>
+
+    <h3>What you can do</h3>
+
+    <ol>
+      <li><p>Ask your GP surgery for your new:</p></li>
+        <ul>
+            <li>Linkage key (sometimes called Passphrase)</li>
+            <li>O.D.S. code (sometimes called Organisation Code or Practice I.D.)</li>
+            <li>Account I.D.</li>
+        </ul>
+
+        {% if serviceName === "The NHS app" %}
+
+        <li><p>When you have all 3 details, use your NHS login to access <b>'{{ serviceName }}'.</b></p></li>
+
+        {% else %}
+
+        <li><p>When you have all 3 details, go to the website or app you were trying to access, and log in with your NHS login.</p></li>
+
+        {% endif %}
+
+      <li><p>You will see this message again. Enter your new registration details.</p></li>
+
+</div>
+
+  <a class="button" href="/patient-online/v21/patient-online-linkage-key{{ params }}">Enter new registration details</a>
+
+    <p class="small">Reference: CID2020</p>
+
+{% endblock %}

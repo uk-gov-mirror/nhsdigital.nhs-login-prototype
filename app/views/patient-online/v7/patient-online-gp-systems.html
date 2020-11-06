@@ -1,0 +1,67 @@
+{% extends '_layouts/_grids/_grid-2-1.html' %}
+{% block page_title %}View your hospital record {{serviceName}}{% endblock %}
+
+{% set params = "?serviceName=" + serviceName + "&service=" + service + "&hidehead=" + hidehead %}
+
+{% block content %}
+
+<div class="first-item">
+  <form>
+    <div class="form-group">
+      <fieldset class="">
+        <h1><legend>Find your registration details on the system you use</legend></h1>
+
+        <details class="" role="group">
+          <summary data-analytics="summary" role="button" aria-controls="details-content-0" aria-expanded="true">
+            <span class="details__summary">This page contains a number of links to external sites</span>
+          </summary>
+          <div class="details__content" id="details-content-0" aria-hidden="false">
+            <div class="reading-width">
+            <p>You may be redirected to another site, hosted by another party. Please be aware that the NHS is not responsible for these sites or their content, products, services or privacy policies.</p>
+            </div>
+          </div>
+        </details>
+
+        {% if system === 'tpp' %}
+          <div>
+            <div class="results__details results__details--nearby" style="margin-top: 0;">
+                <h3 class="">
+                <a href="patient-online-gp-systems-help-so{{ params }}">SystmOnline</a>
+                <br />
+                <img src="/images/system-systmonline.png" alt="SystmOnline" height="60">
+                </h3>
+                <br />
+                <hr />
+            </div>
+          </div>
+        {% endif %}
+
+        {% if system === 'emis' %}
+          <div>
+            <div class="results__details results__details--nearby" style="margin-top: 0;">
+                <h3 class="">
+                <a href="patient-online-gp-systems-help-pa{{ params }}">Patient Access</a>
+                <br />
+                <img src="/images/system-patient-access.png" alt="PatientAccess" height="60">
+                </h3>
+                <br />
+                <hr />
+            </div>
+          </div>
+        {% endif %}
+
+        <div>
+            <div class="results__details results__details--nearby" style="margin-top: 0;">
+                <h3 class="">
+                <a href="patient-online-gp-systems-help-ev{{ params }}">Evergreen</a>
+                <br />
+                <img src="/images/system-evergreen.png" alt="Evergreeen" height="60">
+                </h3>
+                <br />
+            </div>
+        </div>
+    </div>
+  </form>
+</div>
+
+{% endblock %}

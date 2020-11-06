@@ -275,6 +275,38 @@ router.get('/help/prototypes', function (req, res) {
   });
 })
 
+
+
+// User chooses how to provide image of ID (take photo or upload) - service-access-photo-id-instructions.html
+
+router.post('/service-access/v22/choice-id-capture', function (req, res) {
+
+  var id_how = req.session.data['idHow']
+
+  if (id_how == "upload") {
+    res.redirect('service-access-photo-id-upload')
+  } else {
+    res.redirect('service-access-photo-id-camera')
+  }
+})
+
+
+
+// User chooses how they want to do the face match (iProov face scan or video selfie) - service-access-video-selfie.html
+
+router.post('/service-access/v22/choice-face-match', function (req, res) {
+
+  var face_how = req.session.data['faceHow']
+
+  if (face_how == "video") {
+    res.redirect('service-access-video-selfie-triage')
+  } else {
+    res.redirect('service-access-iproov-enrolment')
+  }
+})
+
+
+
 module.exports = router;
 
 // Dev Mode

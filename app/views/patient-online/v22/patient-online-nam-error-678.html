@@ -1,0 +1,52 @@
+{% extends '_layouts/_grids/_grid-2-1-hotjar.html' %}
+{% block page_title %}We need to see your photo I.D.{% endblock %}
+
+{% set params = "?service=" + service + "&serviceName=" + serviceName + "&lsId=" + lsId + "&lsAccess=" + lsAccess + "&lsStudy=" + lsStudy + "&emailAddress=" + emailAddress + "&mobileNum=" + mobileNum + "&hidehead=" + hidehead + "&devMode=" + devMode + "&returnUrl=" + returnUrl + "&uplift=" + uplift %}
+
+{% block content %}
+
+<div class="first-item">
+
+    <p><a href="patient-online-about-you-dob{{ params }}" class="link-back"><em style="font-style: normal">Back to: </em>Enter your date of birth</a></p>
+
+    <h1>We need to see your photo I.D.</h1>
+
+    <p>You need a smartphone or a tablet, and 1 of:</p>
+
+    <ul>
+        <li>passport</li>
+        <li>UK driving licence (full or provisional)</li>
+        <li>European driving licence (full)</li>
+        <li>European national identity card</li>
+    </ul>
+
+    <a class="button" href="/service-access/v21/service-access-start{{ params }}">Use photo I.D. to prove who you are</a>
+
+    <details class="" role="group">
+        <summary data-analytics="summary" role="button" aria-controls="details-content-0" aria-expanded="true">
+            <span class="details__summary">I cannot do this</span>
+        </summary>
+        <div class="callout callout--info callout--friendly" id="details-content-0" aria-hidden="false">
+
+            {% if serviceName !== '' %}
+
+            <p>You cannot access <b>'{{ serviceName }}'</b> without photo I.D. We are working on other ways you can prove who you are.</p>
+
+            {% else %}
+
+            <p>You cannot access this service without photo I.D. We are working on other ways you can prove who you are.</p>
+
+            {% endif %}
+
+
+
+
+
+        </div>
+    </details>
+
+    <p class="small">Reference: CID7009</p>
+
+</div>
+
+{% endblock %}

@@ -1,0 +1,19 @@
+{% extends '_layouts/_grids/_grid-2-1-hotjar.html' %}
+{% block page_title %}Access {{ serviceName }} - There is a problem{% endblock %}
+
+{% set params = "?serviceName=" + serviceName + "&service=" + service + "&lsId=" + lsId + "&lsAccess=" + lsAccess + "&lsStudy=" + lsStudy + "&hidehead=" + hidehead + "&devMode=" + devMode + "&returnUrl=" + returnUrl %}
+
+{% block content %}
+
+<div class="first-item">
+    <h1>Sorry - we cannot create your account</h1>
+
+    <p>This is because one or more of the details that you entered might be wrong.</p>
+
+    <a href="patient-online-linkage-key{{ params }}" class="button">Try again</a>
+
+    <p class="small">Error: 0003</p>
+
+</div>
+
+{% endblock %}

@@ -1,0 +1,30 @@
+{% extends '_layouts/_grids/_grid-2-1-stacked.html' %}
+{% block page_title %}Access {{ serviceName }} - What you can do instead{% endblock %}
+
+{% set signedin = 'true' %}
+{% set params = "?service=" + service + "&serviceName=" + serviceName + "&emailAddress=" + emailAddress + "&mobileNum=" + mobileNum + "&hidehead=" + hidehead + "&devMode=" + devMode + "&returnUrl=" + returnUrl + "&manual=" + manual + "&uplift=" + uplift %}
+
+{% block content %}
+
+<div class="first-item">
+
+  <p><a href="javascript:history.go(-1)" class="link-back">Back</a></p>
+
+  <h1 class="">
+    What you can do instead
+  </h1>
+
+  <ol>
+    <li>Tell your GP surgery that you want to sign up for their online services. They'll ask you to fill in a form and prove who you are.
+    <li>Your GP surgery will give you registration details. You'll need:
+    <ul>
+      <li>Linkage Key (could be called a Passphrase)</li>
+      <li>O.D.S. Code (could be called an Organisation Code or Practice I.D.)</li>
+      <li>Account I.D.</li>
+    </ul> </li>
+    <li>When you have these 3 details, go back to {{ serviceName }} and use your NHS login.</li>
+  </ol>
+
+</div>
+
+{% endblock %}

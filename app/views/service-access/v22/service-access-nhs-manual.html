@@ -1,0 +1,24 @@
+{% extends '_layouts/_grids/_grid-1-hotjar.html' %}
+{% block page_title %}Access {{ serviceName }} - Step 3 of 3: Find your NHS record{% endblock %}
+
+{% set signedin = 'true' %}
+{% set params = "?service=" + service + "&serviceName=" + serviceName + "&emailAddress=" + emailAddress + "&mobileNum=" + mobileNum + "&hidehead=" + hidehead + "&loggedin=" + loggedin + "&devMode=" + devMode + "&returnUrl=" + returnUrl + "&idType=" + idType + "&iproovPass=" + iproovPass + "&manual=" + manual + "&uplift=" + uplift %}
+
+{% block content %}
+
+<section class="intructions">
+
+	<div class="reading-width">
+
+		<h1 class="heading-large"><span class="heading-secondary">Step 3 of 3</span> Help us find your NHS record</h1>
+
+		<p>It's better if you have your NHS number - but you do not need it.</p>
+
+		<div class="form-control" style="margin: 32px 0 16px;">
+			<a class="button--information" href="service-access-nhs-number{{ params }}">Continue</a>
+		</div>
+	</div>
+</section>
+
+{% endblock %}
+{% block rightcol %}{% endblock %}

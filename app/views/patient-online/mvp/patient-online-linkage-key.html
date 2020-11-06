@@ -1,0 +1,38 @@
+{% extends '_layouts/_grids/_grid-2-1.html' %}
+{% block page_title %}View your hospital record {{serviceName}}{% endblock %}
+
+{% set params = "?service=" + service + "&serviceName=" + serviceName + "&emailAddress=" + emailAddress + "&mobileNum=" + mobileNum + "&hidehead=" + hidehead + "&poluser=" + poluser %}
+
+{% block content %}
+
+<div class="first-item">
+  <form>
+    <div class="form-group">
+      <fieldset class="">
+        <h1><legend>Enter your online registration details</legend></h1>
+        <div class="form-group">
+          <label class="form-label" for="field2">Account Linkage Key</label>
+          <span class="form-label__hint">16 characters long</span>
+          <input class="form-control" id="field2" name="field2" type="text">
+        </div>
+        
+        <div class="form-group">
+          <label class="form-label" for="field3">ODS Code</label>
+          <span class="form-label__hint">1 letter and 6 characters - for example E123456</span>
+          <input class="form-control" id="field3" name="field3" type="text">
+        </div>
+        
+        <div class="form-group">
+          <label class="form-label" for="field1">Account ID</label>
+          <span class="form-label__hint">Can be up to 30 characters long</span>
+          <input class="form-control" id="field1" name="field1" type="text">
+        </div>
+    </div>
+    <div class="form-group">
+      <a class="button" href="/service-access/mvp/service-access-pol-3{{ params }}">Continue</a>
+    </div>
+    <p><a href="/service-access/mvp/service-access-nhs{{ params }}&poluser=false">I want to access the NHS App another way</a></p>
+  </form>
+</div>
+
+{% endblock %}

@@ -1,0 +1,27 @@
+{% extends '_layouts/_grids/_grid-1-hotjar.html' %}
+{% block page_title %}Access {{ serviceName }} - To access this service we'll need to do the following{% endblock %}
+
+{% set params = "?service=" + service + "&serviceName=" + serviceName + "&lsId=" + lsId + "&lsAccess=" + lsAccess + "&lsStudy=" + lsStudy + "&devMode=" + devMode + "&returnUrl=" + returnUrl + "&system=" + system + "&hidehead=" + hidehead + "&loggedin=" + loggedin %}
+
+{% block content %}
+
+<div class="first-item">
+
+	<section class="intructions">
+
+		<div class="reading-width">
+
+			<h1 class="heading-large">You now have an <abbr>NHS</abbr> login</h1>
+
+			<p>To use {{ serviceName }}, you'll need to prove who you are. This helps us keep your health information safe.</p>
+
+			<p>We'll ask you one or two questions to check the best way for you to do this.</p>
+
+			<div class="form-control" style="margin: 32px 0 16px;">
+				<a class="button--information" href="patient-online-id-document{{ params }}">Continue</a>
+			</div>
+		</div>
+	</section>
+</div>
+
+{% endblock %}

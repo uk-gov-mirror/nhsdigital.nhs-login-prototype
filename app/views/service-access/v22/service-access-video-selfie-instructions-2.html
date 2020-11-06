@@ -1,0 +1,58 @@
+{% extends '_layouts/_grids/_grid-2-1-hotjar.html' %}
+{% block page_title %}Access {{ serviceName }} - Instructions to record a short video{% endblock %}
+
+{% set signedin = 'true' %}
+{% set params = "?service=" + service + "&serviceName=" + serviceName + "&emailAddress=" + emailAddress + "&mobileNum=" + mobileNum + "&idType=" + idType + "&hidehead=" + hidehead + "&devMode=" + devMode + "&returnUrl=" + returnUrl + "&genericButton=" + genericButton + "&uplift=" + uplift %}
+
+{% block content %}
+
+<div class="first-item">
+
+  <section class="" id="scan-id-1">
+
+    <p><a href="service-access-video-selfie{{ params }}" class="link-back">Back</a></p>
+
+    <form>
+      <fieldset class="">
+
+        <h1 style="padding-bottom: 0;">Record a short video</h1>
+        <p>You'll need to:</p>
+        <ul>
+          <li>record a video of your face</li>
+          <li>say or show 4 numbers in the video</li>
+        </ul>
+
+
+        <h2 class="h3" style="padding:0.5em 0 0 0;">How do you want to do this?</h2>
+
+        <div class="selection-button-radio" style="margin-top: 32px;">
+          <div class="multiple-choice">
+            <input id="radio-inline-1" type="radio" name="radio-inline-group" value="service-access-challenge-1{{ params }}">
+            <label for="radio-inline-1" class="block-label" style="position: static;">Say the numbers</label>
+          </div>
+        </div>
+        <div class="selection-button-radio">
+          <div class="multiple-choice">
+            <input id="radio-inline-2" type="radio" name="radio-inline-group" value="service-access-challenge-2{{ params }}">
+            <label for="radio-inline-2"class="block-label" style="position: static;">Use my hand to show the numbers</label>
+          </div>
+        </div>
+        <div class="selection-button-radio">
+          <div class="multiple-choice">
+            <input id="radio-inline-3" type="radio" name="radio-inline-group" value="service-access-challenge-3{{ params }}">
+            <label for="radio-inline-3"class="block-label" style="position: static;">Write the numbers down and show them</label>
+          </div>
+        </div>
+        <div class="form-group">
+          <a class="button" href="#" id="continue">Continue</a>
+        </div>
+      </fieldset>
+
+    </form>
+
+
+  </section>
+
+</div>
+
+{% endblock %}

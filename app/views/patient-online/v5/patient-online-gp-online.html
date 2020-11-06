@@ -1,0 +1,52 @@
+{% extends '_layouts/_grids/_grid-2-1.html' %}
+{% block page_title %}View your hospital record {{serviceName}}{% endblock %}
+
+{% set params = "?serviceName=" + serviceName %}
+
+{% block content %}
+
+<div class="first-item">
+  <form>
+    <div class="form-group">
+      <fieldset class="">
+        <h1><legend>Do you use your GP's online service?</legend></h1>
+
+        <details class="" role="group">
+          <summary data-analytics="summary" role="button" aria-controls="details-content-0" aria-expanded="true">
+            <span class="details__summary">What is GP Online?</span>
+          </summary>
+          <div class="details__content" id="details-content-0" aria-hidden="false">
+            <div class="reading-width">
+            <p>GP online services allow you to book appointments online, order repeat prescriptions and access your medical record</p>
+
+            <!--<p>Patient Access, Evergreen, SystmOnline</p>-->
+            <img src="/images/system-patient-access.png" alt="Patient Access" height="40">
+            <img style="padding-left: 16px" src="/images/system-evergreen.png" alt="Evergreeen" height="40">
+            <img style="padding-left: 16px" src="/images/system-systmonline.png" alt="SystmOnline" height="40">
+            </div>
+          </div>
+        </details>
+
+        <div>
+          <label class="block-label selection-button-radio" for="radio-inline-1">
+            <input id="radio-inline-1" type="radio" name="radio-inline-group" value="patient-online-gp-lookup{{ params }}">
+            Yes
+          </label>
+        </div>
+
+        <div>
+          <label class="block-label selection-button-radio" for="radio-inline-2">
+            <input id="radio-inline-2" type="radio" name="radio-inline-group" value="../service-access/service-access-offline{{ params }}">
+            No
+          </label>
+        </div>
+
+      </fieldset>
+    </div>
+    <div class="form-group">
+      <a class="button" href="#" id="continue">Continue</a>
+    </div>
+  </form>
+</div>
+
+{% endblock %}

@@ -1,0 +1,147 @@
+{% extends '_layouts/_grids/_grid-1-hotjar.html' %}
+{% block page_title %}Access {{ serviceName }} - Record a short video{% endblock %}
+
+{% set signedin = 'true' %}
+{% set params = "?service=" + service + "&serviceName=" + serviceName + "&emailAddress=" + emailAddress + "&mobileNum=" + mobileNum + "&idType=" + idType + "&formerror=" + formerror + "&hidehead=" + hidehead + "&devMode=" + devMode + "&returnUrl=" + returnUrl + "&uplift=" + uplift %}
+
+
+{% block extrascripts %}
+<script src="https://webrtc.github.io/adapter/adapter-latest.js"></script>
+<script src="/getUserMedia.js"></script>
+{% endblock %}
+
+{% block header %}
+
+
+{% endblock %}
+
+{% block content %}
+<div class="first-item">
+
+    <section class="loading-container" id="scan-id-0" style="display:block">
+
+        <h1 id="spinner-heading" style="padding-bottom: 0; display:none;">Uploading your video</h1>
+
+        <div class="bar_container">
+            <div id="main_container">
+                <div id="pbar" class="progress-spinner" data-percent="0">
+                    <img src="/images/loader-spinner.svg" width="200px" height="200px" id="spinner" />
+                    <div class="ppc-loading">
+                        <div class="pcc-percents-wrapper">
+                            <span id="spinner-status">Loading</span><span aria-hidden="true">...</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </section>
+
+
+{#     <section id="camera-container" style="display:none">
+
+
+    <div class="callout callout--error camera-file-format" style="display:block; background-color:#fff0">
+    <h2 class="h3">There is a problem</h2>
+    
+    <p>Your video is too short. Click <em>start recording</em> to record your video again. Click <em>stop recording</em> when you have finished telling us the 4 numbers.</p>
+
+    <!-- <p>Your video is too long. Click <em>start recording</em> to record your video again. Click <em>stop recording</em> when you have finished telling us the 4 numbers.</p> -->
+
+    </div> #}
+
+    {% if hideBack !== 'true' %}
+    <p><a href="service-access-video-selfie-triage{{ params }}" class="link-back"><i style="font-weight: normal;font-style: normal;">Back</i></a></p>
+    {% endif %}
+
+    <h1>Record your video</h1>
+
+        <p>Make sure your face is inside the oval.</p>
+        <p>Write these numbers on a piece of paper:</p>
+        <p class="camera-challenge" style="font-size: 42px;padding-bottom: .5em;">1 3 5 7</p>
+        <p>Hold the piece of paper to the camera.</p>
+        <br>
+
+{#             <div class="camera-instructions-text">Say these numbers whilst recording your video: </div>
+            <div class="camera-instructions-numbers">{{ pinCode }} 1 3 5 7</div> #}
+        
+                <div class="camera-preview-wrapper">
+            <div class="camera-preview-overlay"></div>
+            <div class="camera-preview-feed">
+                <video id="gum" muted autoplay></video>
+            </div>
+        </div>
+
+        <br>
+
+        <div class="camera-record">
+            <button id="record" class="button" disabled>Start recording</button>
+        </div>
+
+        <p><a class="" href="service-access-video-selfie-triage{{ params }}">Cancel</a></p>
+
+        <audio id="audio" volume="0.1" src="/images/beep-3.wav" autostart="false" ></audio>
+    </section>
+
+    <section class="uploader-container" id="scan-id-3" style="display:none">
+
+        <h1 id="progressbar-heading" style="padding-bottom: 0;">Preparing your preview...</h1>
+
+        <div class="bar_container">
+            <div id="main_container">
+                <div id="pbar" class="progress-pie-chart" data-percent="0">
+                    <div class="ppc-progress">
+                        <div class="ppc-progress-fill"></div>
+                    </div>
+                    <div class="ppc-percents">
+                        <div class="pcc-percents-wrapper">
+                            <span>%</span>
+                        </div>
+                    </div>
+                </div>
+
+                <progress style="display: none" id="progress_bar" value="0" max="100"></progress>
+            </div>
+        </div>
+
+    </section>
+
+
+    <section class="preview-container" id="scan-id-5" style="display:none">
+
+        <h1 style="padding-bottom: 0;">Review your video</h1>
+
+        <div class="reading-width">
+            <div id="scan-video-preview">
+                <video id="recorded" controls="" autoplay loop style="width:100%;height:auto;"></video>
+            </div>
+
+                <p>Can you see your face and the numbers <strong>1 3 5 7</strong> clearly?</p>
+        </div>
+
+        <button class="button" id="submitvideo">Yes, submit this video</button>
+
+        <p><a href="#" id="retakevideo">No, record video again</a>.</p>
+
+    </section>
+
+    <button id="download" disabled style="visibility:hidden;">Download</button>
+    <button id="play" disabled style="visibility:hidden;">Play</button>
+    {% if uplift === 'true' %}
+    <button id="confirmButton" style="visibility:hidden" onclick="window.location='service-access-nhs-pds-checking{{ params }}';" >Continue</button>
+    {% else %}
+    <button id="confirmButton" style="visibility:hidden" onclick="window.location='service-access-nhs{{ params }}';" >Continue</button>
+    {% endif %}
+</div>
+
+<script type="text/javascript">
+    //show then hide the spinner animation
+    setTimeout(function(){
+        document.getElementById('scan-id-0').style.display = 'none'
+    }, 2500)
+    setTimeout(function(){
+        document.getElementById('camera-container').style.display = 'block'
+    }, 2500)
+</script>
+
+{% endblock %}

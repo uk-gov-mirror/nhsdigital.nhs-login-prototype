@@ -1,0 +1,44 @@
+{% extends '_layouts/_nhsuk_layout.html' %}
+{% block page_title %}Offline Vouching Identity Service{{serviceName}}{% endblock %}
+
+{% block body %}
+
+<div class="first-item">
+  <form>
+    <div class="form-group">
+      <fieldset class="">
+        <h1><legend>Access [service]</legend></h1>
+        <h3>Can you install an app on your smartphone or tablet?</h3>
+        <h4>You need to download our free app and use your device's camera as part of verifying your identity.</h4>
+
+        <div>
+          <label class="block-label selection-button-radio" for="radio-inline-1">
+            <input id="radio-inline-1" type="radio" name="radio-inline-group" value="/app/intro">
+            Yes
+          </label>
+        </div>
+        
+        <div>
+          <label class="block-label selection-button-radio" for="radio-inline-2">
+            <input id="radio-inline-2" type="radio" name="radio-inline-group" value="uplift-offline">
+            Yes, but I prefer not to
+          </label>
+        </div>
+
+        <div>
+          <label class="block-label selection-button-radio" for="radio-inline-3">
+            <input id="radio-inline-3" type="radio" name="radio-inline-group" value="uplift-offline">
+            No
+          </label>
+        </div>
+
+      </fieldset>
+    </div>
+    <div class="form-group">
+      <a class="button" href="#" id="continue">Continue</a>
+    </div>
+    
+  </form>
+</div>
+
+{% endblock %}

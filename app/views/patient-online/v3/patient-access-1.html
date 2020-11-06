@@ -1,0 +1,34 @@
+{% extends '_layouts/_grids/_grid-2-1.html' %}
+{% block page_title %}Access your hospital results {{serviceName}}{% endblock %}
+{% set signedin = '' %}
+
+{% block content %}
+
+<div class="first-item">
+  <form>
+    <div class="form-group">
+      <fieldset class="">
+      <h3>Access your hospital results</h3>
+        <h1><legend>Log in using your Patient Access details</legend></h1>
+        
+        <div class="form-group">
+          <label class="form-label" for="field1">User ID</label>
+          <input class="form-control" id="field1" name="field1" type="text">
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="field2">Password</label>
+          <input class="form-control" id="field2" name="field2" type="text">
+        </div>
+
+      </fieldset>
+
+    </div>
+    <div class="form-group">
+      <a class="button" href="/service/your-medical-record" id="">Log in</a>
+    </div>
+    <br />
+    <a href="patient-access-2">I can't remember my Patient Access log in details</a>
+  </form>
+</div>
+
+{% endblock %}

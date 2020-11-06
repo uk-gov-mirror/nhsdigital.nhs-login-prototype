@@ -1,0 +1,56 @@
+{% extends '_layouts/_grids/_grid-2-1-hotjar.html' %}
+{% block page_title %}You cannot go back to the scan{% endblock %}
+
+{% set signedin = 'true' %}
+{% set params = "?service=" + service + "&serviceName=" + serviceName + "&emailAddress=" + emailAddress + "&mobileNum=" + mobileNum + "&idType=" + idType + "&hidehead=" + hidehead + "&challenge=" + challenge + "&devMode=" + devMode + "&returnUrl=" + returnUrl + "&genericButton=" + genericButton + "&uplift=" + uplift %}
+
+{% block content %}
+
+<div class="first-item">
+
+  <section class="" id="scan-id-1">
+
+      <form>
+
+          <div class="form-group">
+
+              <h1>You cannot go back to the scan</h1>
+
+              <fieldset class="">
+
+                  <legend>
+                      <p class="" style="padding:0.5em 0; font-size: 20px; font-weight: bold;">You can either:</p>
+                  </legend>
+
+                  <label class="block-label selection-button-radio" for="radio-inline-1">
+                      <input id="radio-inline-1" type="radio" name="radio-inline-group" value="service-access-video-selfie-triage{{ params }}&upload=camera">
+                      Record a short video
+                  </label>
+
+      <div class="nhsuk-radios__divider" style="font-size: 20px; padding-left: 10px; margin-top: 0px">or</div>
+
+                  <label class="block-label selection-button-radio" for="radio-inline-4">
+                      <input id="radio-inline-4" type="radio" name="radio-inline-group" value="service-access-photo-id-passport{{ params }}&upload=file">
+                      Go back to step 1 and send a new photo of your I.D.
+                  </label>
+
+
+              </fieldset>
+          </div>
+
+          <div class="form-group">
+              <a class="button" href="#" id="continue">Continue</a>
+          </div>
+
+      </form>
+
+  </section>
+
+</div>
+
+<script type="text/javascript">
+
+
+</script>
+
+{% endblock %}

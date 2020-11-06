@@ -1,0 +1,23 @@
+{% extends '_layouts/_grids/_grid-2-1-hotjar.html' %}
+{% block page_title %}Access {{ serviceName }} - We cannot connect your NHS login to your GP surgery{% endblock %}
+
+{% set params = "?service=" + service + "&serviceName=" + serviceName + "&emailAddress=" + emailAddress + "&mobileNum=" + mobileNum + "&hidehead=" + hidehead + "&devMode=" + devMode + "&returnUrl=" + returnUrl + "&result=" + result + "&reason=" + reason + "&pyiuser=true" + "&uplift=" + uplift %}
+
+{% block content %}
+
+<div class="first-item">
+
+    <!--<p><a href="service-access-connect-gp{{ params }}" class="link-back">Back</a></p>-->
+
+    <h1>We cannot connect your NHS login to your GP surgery</h1>
+
+    <p>Send an email to <a href="mailto:help.nhslogin@nhs.net?subject=NHS%20login%20-%20error%20CID7029"">help.nhslogin@nhs.net</a> with the code <em style="font-weight: bold;font-style: normal;">CID7029</b></em>, so we can find out what's causing this problem.</p>
+
+    <p>We will email you when we know how to fix it.</p>
+    <!--<p><a href="https://www.nhs.uk/contact-us/nhs-app-contact-us/)" title="Find the contact details of the NHS App team">Contact the NHS App team</a> so we can try to fix this problem.</p>-->
+
+    <p class="small">Reference: CID7029</p>
+
+</div>
+
+{% endblock %}
