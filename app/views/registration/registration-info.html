@@ -1,0 +1,64 @@
+{% extends 'layouts/layout.html' %}
+
+{% block pageTitle %}
+What you need
+{% endblock %}
+
+{% block content %}
+
+<div class="nhsuk-grid-row">
+  <div class="nhsuk-grid-column-two-thirds nhsuk-u-margin-bottom-4">
+
+    {{ backLink({
+      "href": "email-enter",
+      "text": "Back to: Enter your email"
+    }) }}
+
+    <h1 class="nhsuk-heading-l">What you need</h1>
+
+    <h2 class="nhsuk-heading-m">5 to 10 minutes of your time</h2>
+    <p>This may take longer if you are using technology that helps you with a disability or limited mobility.</p>
+
+    <h2 class="nhsuk-heading-m">Personal information</h2>
+    <p>We need to match you to your NHS record. To do this we will ask for some personal information.</p>
+    <p>If you do not know your NHS number, you can tell us your full name instead. Telling us your NHS number will give us the best chance of matching you to your NHS record.</p>
+    <p>We will ask for your:</p>
+    <ul>
+      <li>NHS number or name</li>
+      <li>date of birth</li>
+      <li>postcode</li>
+    </ul>
+
+    <p>Telling us your NHS number will give us the best chance of matching you to your NHS record. If you do not know your NHS number, you can tell us your full name instead.</p>
+
+    <details class="nhsuk-details">
+      <summary class="nhsuk-details__summary">
+        <span class="nhsuk-details__summary-text">
+          How to find your NHS number
+        </span>
+      </summary>
+      <div class="nhsuk-details__text">
+        <p>An NHS number is a 10 digit number, like 485 777 3456.</p>
+        <p>You can find your NHS number by logging in to a GP online service or on any document the NHS has sent you, such as your:</p>
+        <ul>
+          <li>prescriptions</li>
+          <li>test results</li>
+          <li>hospital referral letters</li>
+          <li>appointment letters</li>
+        </ul>
+        <p>Ask your GP surgery for help if you can't find your NHS number.</p>
+    
+      </div>
+    </details>
+
+    <h2 class="nhsuk-heading-m">A mobile phone</h2>
+    <p>You will need a working mobile phone with signal, as we will text you a security code.</p>
+
+    <form method="POST" action="password-create">
+      <button class="nhsuk-button full-width">Continue</button>
+    </form>
+
+  </div>
+</div>
+
+{% endblock %}

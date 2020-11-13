@@ -1,8 +1,4 @@
-
 {% extends 'layouts/layout.html' %}
-
-{% from 'button/macro.njk' import button %}
-{% from 'back-link/macro.njk' import backLink %}
 
 {% block pageTitle %}
 Enter your email address
@@ -13,10 +9,12 @@ Enter your email address
 <div class="nhsuk-grid-row">
   <div class="nhsuk-grid-column-two-thirds nhsuk-u-margin-bottom-4">
 
-    <form method="post" action="register-create-password">
+    <form method="POST" action="registration-info">
+
       <fieldset class="nhsuk-fieldset">
+        
         <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--l">
-          <h1 class="nhsuk-heading-l">
+          <h1 class="nhsuk-fieldset__heading">
             Enter your email address
           </h1>
         </legend>
@@ -28,49 +26,24 @@ Enter your email address
           <input class="nhsuk-input nhsuk-input--width-20" id="userEmail" name="userEmail" value="{{ data['userEmail'] }}" type="email">
         </div>
         
-        <button type="submit" data-redirect="register-create-password" class="nhsuk-button full-width" id="button--save">Continue</button>
+        <button type="submit" class="nhsuk-button full-width">Continue</button>
 
         <div class="nhsuk-inset-text nhsuk-u-margin-top-1 nhsuk-u-margin-bottom-5">
           <span class="nhsuk-u-visually-hidden">Information: </span>
           <h3>What is NHS login?</h3>
           <p>You can use your NHS login to access health websites and apps that have the NHS login button. If you do not have an NHS login, enter your email address to set one up.</p>
         </div>
+
       </fieldset>
+
       <div class="nhsuk-warning-callout  nhsuk-u-margin-top-3">
         <h3 class="nhsuk-warning-callout__label">Coronavirus (COVID-19)</h3>
         <p>For health information and advice, read <a href="#" class="nhsuk-link">NHS guidance about Coronavirus</a></p>
       </div>
+
     </form>
 
   </div>
 </div>
-
-<script type="text/javascript">
- /*
-  submitSpinner()
-
-  function buttonClicked(target) {
-    target.setAttribute('disabled', 'disabled')
-    target.className += ' button--save'
-    setTimeout(function () {
-      window.location.href = target.dataset.redirect;
-    }, 2000)
-  }
-
-  function submitSpinner() {
-    var selects = document.getElementById('button--save')
-    selects.addEventListener('click', function (event) {
-      event.preventDefault()
-      if (selects.getAttribute('disabled') === 'disabled') {
-        console.log('already clicked')
-      } else {
-        event.preventDefault()
-        console.log(selects.getAttribute('disabled'))
-        buttonClicked(selects)
-      }
-    })
-  }
-*/
-</script>
 
 {% endblock %}

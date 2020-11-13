@@ -1,8 +1,5 @@
 {% extends 'layouts/layout.html' %}
 
-{% from 'button/macro.njk' import button %}
-{% from 'back-link/macro.njk' import backLink %}
-
 {% block pageTitle %}
 Do you know your NHS number
 {% endblock %}
@@ -10,6 +7,7 @@ Do you know your NHS number
 {% block content %}
 <div class="nhsuk-grid-row">
   <div class="nhsuk-grid-column-two-thirds nhsuk-u-margin-bottom-4">
+    
     <form method="post">
       <div class="nhsuk-form-group">
         <fieldset class="nhsuk-fieldset">
@@ -45,7 +43,7 @@ Do you know your NHS number
                     <span class="nhsuk-hint" id="nhs-number-hint">
                       Example: 485 777 3456
                     </span>
-                    <input class="nhsuk-input nhsuk-u-width-two-thirds" id="nhs-number" name="nhs-number" value="{{ checked("nhs-number", "Yes") }}" type="number">
+                    <input class="nhsuk-input nhsuk-u-width-two-thirds" id="nhs-number" name="nhs-number" value="{{ checked('nhs-number', 'Yes') }}" type="number">
                   </div>
                 </div>
               </div>
@@ -66,31 +64,6 @@ Do you know your NHS number
         Continue
       </button>
     </form>
-
-    {% if data['devMode'] %}
-    <details class="nhsuk-details dev-mode" role="group">
-      <summary class="nhsuk-details__summary" role="button" aria-controls="details-content-0" aria-expanded="true">
-        <span class="nhsuk-details__summary-text">
-          Continue with testing scenario
-        </span>
-      </summary>
-      <div class="nhsuk-details__text">
-        <p>Routes</p>
-        <ul>
-          <li><a href="../demo/enter-name">User doesn't know NHS number</a></li>
-        </ul>
-        <p>Errors</p>
-        <ul>
-          <li><a href="../errors/error-radio-no-input">Field validation</a></li>
-          <li><a href="../errors/error-nhs-number-digits-exceeded">>10 digits entered</a></li>
-          <li><a href="../errors/error-nhs-number-field-validation">No NHS number on record</a></li>
-          <li><a href="../errors/error-nhs-number-no-input">No user input</a></li>
-          <li><a href="../errors/error-nhs-number-national-insurance">National insurance number input</a></li>
-          <li><a href="../errors/error-nhs-number-numbers-and-letters">More or less than 10 numbers and includes letters</a></li>
-        </ul>
-      </div>
-    </details>
-    {% endif %}
 
   </div>
 </div>

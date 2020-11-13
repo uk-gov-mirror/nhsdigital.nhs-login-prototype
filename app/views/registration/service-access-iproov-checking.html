@@ -1,0 +1,38 @@
+
+{% extends 'layouts/layout.html' %}
+
+{% block pageTitle %}
+Checking your face and I.D.
+{% endblock %}
+
+{% block content %}
+
+<div class="nhsuk-grid-row">
+  <div class="nhsuk-width-container">
+
+    <h1 class="nhsuk-heading-l">Checking your face and I.D.</h1>
+
+    <section class="loading-container">
+      <div class="bar_container">
+        <div class="progress-spinner">
+          <img src="/images/loader-spinner.svg" id="spinner" />
+          <div class="ppc-loading">
+            <div class="pcc-percents-wrapper">
+              <span id="spinner-status" class="nhsuk-body">Please wait</span><span aria-hidden="true">...</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </div>
+</div>
+
+<script>
+  setTimeout(function () {
+    window.location.href =
+      'service-access-nhs';
+  }, 2000);
+</script>
+
+{% endblock %}

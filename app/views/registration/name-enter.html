@@ -1,0 +1,58 @@
+{% extends 'layouts/layout.html' %}
+
+{% block pageTitle %}
+Enter your full name
+{% endblock %}
+
+{% block content %}
+<div class="nhsuk-grid-row">
+  <div class="nhsuk-grid-column-two-thirds nhsuk-u-margin-bottom-4">
+
+    {{ backLink({
+      "href": "nhs-number",
+      "text": "Back to: Do you know your NHS number?"
+    }) }}
+
+    <form method="POST" action="dob-enter">
+
+      <fieldset class="nhsuk-fieldset">
+          
+        <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--l">
+          <h1 class="nhsuk-fieldset__heading">
+            Enter your full name
+          </h1>
+        </legend>
+
+        <p>Use the same full name that you registered with your GP surgery.</p>
+
+        <div class="nhsuk-form-group">
+          <label class="nhsuk-label" for="userNameFirst">
+            First name
+          </label>
+          <input class="nhsuk-input nhsuk-u-width-two-thirds" id="userNameFirst" name="userNameFirst" type="text">
+        </div>
+      
+        <div class="nhsuk-form-group">
+          <label class="nhsuk-label" for="userNameMiddle">
+            Middle name (if you have one)
+          </label>
+          <input class="nhsuk-input nhsuk-u-width-two-thirds" id="userNameMiddle" name="userNameMiddle" type="text">
+        </div>
+      
+        <div class="nhsuk-form-group">
+          <label class="nhsuk-label" for="userNameLast">
+            Last name
+          </label>
+          <input class="nhsuk-input nhsuk-u-width-two-thirds" id="userNameLast" name="userNameLast" type="text">
+        </div>
+
+        <button class="nhsuk-button full-width" type="submit">Continue</button>
+
+      </fieldset>
+
+    </form>
+
+  </div>
+</div>
+
+{% endblock %}
