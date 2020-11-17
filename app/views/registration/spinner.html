@@ -1,16 +1,14 @@
-
 {% extends 'layouts/layout.html' %}
 
 {% block pageTitle %}
-Checking your face and I.D.
+Please wait
 {% endblock %}
 
 {% block content %}
-
 <div class="nhsuk-grid-row">
   <div class="nhsuk-width-container">
 
-    <h1 class="nhsuk-heading-l">Checking your face and I.D.</h1>
+    <!--<h1 class="nhsuk-heading-l">Checking your details</h1>-->
 
     <section class="loading-container">
       <div class="bar_container">
@@ -27,12 +25,5 @@ Checking your face and I.D.
 
   </div>
 </div>
-
-<script>
-  setTimeout(function () {
-    window.location.href =
-      'service-access-complete';
-  }, 2000);
-</script>
 
 {% endblock %}

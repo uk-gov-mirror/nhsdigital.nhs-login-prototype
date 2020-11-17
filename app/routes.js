@@ -49,6 +49,29 @@ router.post('/registration/nhs-number-checking', function (req, res) {
 
 
 
+
+
+// user-profile.html routing
+
+router.post('/registration/p5-p9-uplift/user-profile-choice', function (req, res) {
+  
+  // Make a variable and give it the value from 'confirm-details-radio'
+  var confDetails = req.session.data['confirm-details-radio']
+
+  //Check whether the variable matches a condition below
+  if (confDetails == "yes") {
+    // Send user to start of PYI journey
+    res.redirect('/registration/service-access-start')
+  } else if (confDetails == "no") {
+    res.redirect('error-p5-p9-uplift-hc-wrong-details')
+  } else if (confDetails == "incorrect") {
+    res.redirect('error-p5-p9-uplift-hc-incorrect-details')
+  }
+})
+
+
+
+
 // Clear all session data
 router.get('/clear', (req, res) => {
   req.session.data = {}

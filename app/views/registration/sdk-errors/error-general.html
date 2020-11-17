@@ -1,0 +1,29 @@
+{% extends 'layouts/layout.html' %}
+
+{% block pageTitle %}
+There was a technical problem
+{% endblock %}
+
+{% block content %}
+
+<div class="nhsuk-grid-row">
+  <div class="nhsuk-grid-column-two-thirds nhsuk-u-margin-bottom-8">
+
+    <h1 class="nhsuk-heading-l">There was a technical problem</h1>
+
+    <p>You will need to try again by choosing the I.D. you want to use.</p>
+
+    <form method="POST" action="/registration/service-access-photo-id-type">
+      <button type="submit" class="nhsuk-button nhsuk-u-margin-bottom-0">Choose I.D.</button>
+    </form>
+
+    <div class="or">
+      <span>Or</span>
+    </div>
+
+    <p><a href="/registration/patient-online-details">Prove who you are without sending a photo of your I.D.</a></p>
+
+  </div>
+</div>
+
+{% endblock %}

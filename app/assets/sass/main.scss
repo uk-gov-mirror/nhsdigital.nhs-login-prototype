@@ -345,3 +345,17 @@ img#spinner{
   max-width: 200px;
   max-height: 200px;
 }
+
+.or{
+  width: 100%;
+  height: 12px;
+  border-bottom: 1px solid black;
+  text-align: center;
+  margin: 40px 0;
+
+  span{
+    font-size: 18px;
+    background-color: #f0f4f5;
+    padding: 0 10px;
+  }
+}
