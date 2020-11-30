@@ -72,6 +72,38 @@ router.post('/registration/p5-p9-uplift/user-profile-choice', function (req, res
 
 
 
+// patient-online-details.html routing
+
+router.post('/registration/pol-choice-1', function (req, res) {
+
+  var pol_choice_1 = req.session.data['example']
+
+  if (pol_choice_1 == "yes") {
+    res.redirect('patient-online-details-2')
+  } else {
+    res.redirect('')
+  }
+})
+
+
+
+
+// patient-online-details-2.html routing
+
+router.post('/registration/pol-choice-2', function (req, res) {
+
+  var pol_choice_2 = req.session.data['example']
+
+  if (pol_choice_2 == "yes") {
+    res.redirect('patient-online-linkage-key')
+  } else {
+    res.redirect('')
+  }
+})
+
+
+
+
 // Clear all session data
 router.get('/clear', (req, res) => {
   req.session.data = {}

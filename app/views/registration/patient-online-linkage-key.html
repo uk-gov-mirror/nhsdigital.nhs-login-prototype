@@ -1,0 +1,73 @@
+{% extends 'layouts/layout.html' %}
+
+{% block pageTitle %}
+Do you have the following 3 registration details for the online services you use?
+{% endblock %}
+
+{% block content %}
+
+<div class="nhsuk-grid-row">
+	<div class="nhsuk-grid-column-two-thirds nhsuk-u-margin-bottom-4">
+
+    <div class="nhsuk-back-link">
+      <a class="nhsuk-back-link__link" href="patient-online-details-2">
+        <svg class="nhsuk-icon nhsuk-icon__chevron-left" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
+          aria-hidden="true">
+          <path
+            d="M8.5 12c0-.3.1-.5.3-.7l5-5c.4-.4 1-.4 1.4 0s.4 1 0 1.4L10.9 12l4.3 4.3c.4.4.4 1 0 1.4s-1 .4-1.4 0l-5-5c-.2-.2-.3-.4-.3-.7z">
+          </path>
+        </svg>
+        Back to: Do you have the following 3 registration details for the online services you use?
+      </a>
+    </div>
+
+    <form action="service-access-nhs-number-demographics-dob" method="POST">
+
+      <fieldset class="nhsuk-fieldset">
+
+        <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--l">
+          <h1 class="nhsuk-fieldset__heading">
+            Enter your registration details
+          </h1>
+        </legend>
+      
+        <p class="nhsuk-hint">Enter the details exactly as they are written.</p>
+        
+        <div class="nhsuk-form-group">
+          <label class="nhsuk-label" for="userLinkage">
+            Linkage Key (could be called a Passphrase)
+          </label>
+          <input class="nhsuk-input nhsuk-u-width-two-thirds" id="userLinkage" name="userLinkage" type="text">
+        </div>
+      
+        <div class="nhsuk-form-group">
+          <label class="nhsuk-label" for="userODS">
+            O.D.S. Code (could be called an Organisation Code or Practice I.D.)
+          </label>
+          <input class="nhsuk-input nhsuk-u-width-two-thirds" id="userODS" name="userODS" type="text">
+        </div>
+      
+        <div class="nhsuk-form-group">
+          <label class="nhsuk-label" for="userAccountID">
+            Account I.D.
+          </label>
+          <input class="nhsuk-input nhsuk-u-width-two-thirds" id="userAccountID" name="userAccountID" type="text">
+        </div>
+
+      </fieldset>
+
+      <button class="nhsuk-button">Continue</button>
+
+    </form>
+
+    <p>If you do not have these 3 details or your details do not work, you can either:</p>
+
+    <ul>
+        <li><a href="service-access-what-you-need">send a photo of your I.D. online</a> to prove who you are</li>
+        <li><a href="service-access-offline-retrieve">ask your GP surgery for help</a> to get your registration details</li>
+    </ul>
+
+	</div>
+</div>
+
+{% endblock %}

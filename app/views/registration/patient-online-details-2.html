@@ -1,7 +1,7 @@
 {% extends 'layouts/layout.html' %}
 
 {% block pageTitle %}
-Prove who you are without sending a photo of your I.D.
+Do you have the following 3 registration details for the online services you use?
 {% endblock %}
 
 {% block content %}
@@ -10,47 +10,50 @@ Prove who you are without sending a photo of your I.D.
 	<div class="nhsuk-grid-column-two-thirds nhsuk-u-margin-bottom-4">
 
     <div class="nhsuk-back-link">
-      <a class="nhsuk-back-link__link" href="service-access-what-you-need">
+      <a class="nhsuk-back-link__link" href="patient-online-details">
         <svg class="nhsuk-icon nhsuk-icon__chevron-left" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
           aria-hidden="true">
           <path
             d="M8.5 12c0-.3.1-.5.3-.7l5-5c.4-.4 1-.4 1.4 0s.4 1 0 1.4L10.9 12l4.3 4.3c.4.4.4 1 0 1.4s-1 .4-1.4 0l-5-5c-.2-.2-.3-.4-.3-.7z">
           </path>
         </svg>
-        Back to: How to prove who you are
+        Back to: Prove who you are without sending a photo of your I.D.
       </a>
     </div>
 
-    <h1 class="nhsuk-heading-l">Prove who you are without sending a photo of your I.D.</h1>
-    
-    <p>We will ask you 1 or 2 questions about other health services you use. We will use this information to tell you how you can prove who you are.</p>
-
-    <form method="POST" action="pol-choice-1">
+    <form method="POST" action="pol-choice-2">
 
       <div class="nhsuk-form-group">
 
         <fieldset class="nhsuk-fieldset">
-          <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--m">
+          <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--l">
             <h1 class="nhsuk-fieldset__heading">
-              Do you use your GP surgery’s online services?
+              Do you have the following 3 registration details for the online services you use?
             </h1>
           </legend>
 
-          <div class="nhsuk-hint">Online services include booking appointments, ordering repeat prescriptions and seeing your GP record.</div>
+          <div class="nhsuk-hint">
+            <ul>
+              <li>Linkage Key (could be called Passphrase)</li>
+              <li>O.D.S. Code (could be called Organisation Code or Practice I.D.)</li>
+              <li>Account I.D.</li>
+            </ul>
+            <p>You might have been given these details when you registered.</p>
+          </div>
       
           <div class="nhsuk-radios">
       
             <div class="nhsuk-radios__item">
               <input class="nhsuk-radios__input" id="example-1" name="example" type="radio" value="yes">
               <label class="nhsuk-label nhsuk-radios__label" for="example-1">
-                Yes - I use online services
+                Yes - I have all 3 details
               </label>
             </div>
       
             <div class="nhsuk-radios__item">
               <input class="nhsuk-radios__input" id="example-2" name="example" type="radio" value="no">
               <label class="nhsuk-label nhsuk-radios__label" for="example-2">
-                No - I do not use online services
+                No - I do not have all 3 details
               </label>
             </div>
 
