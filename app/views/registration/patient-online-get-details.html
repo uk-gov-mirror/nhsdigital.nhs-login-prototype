@@ -1,0 +1,43 @@
+{% extends 'layouts/layout.html' %}
+
+{% block pageTitle %}
+Ask your GP surgery for your registration details
+{% endblock %}
+
+{% block content %}
+
+<div class="nhsuk-grid-row">
+	<div class="nhsuk-grid-column-two-thirds nhsuk-u-margin-bottom-4">
+
+    {{ backLink({
+      "href": "patient-online-details-2",
+      "text": "Back to: Do you have the 3 registration details?"
+    }) }}
+
+    <h1 class="nhsuk-heading-l">Contact your GP surgery for your registration details</h1>
+
+    <p>What you need to do:</p>
+
+      <ol>
+        <li>Contact your GP surgery. If you can, contact them without visiting in person.</li>
+        <li>
+          Tell your GP surgery that you need your registration details for their online services. The 3 details you need are:
+          <ul class="nhsuk-u-margin-top-2">
+            <li>Linkage Key (could be called Passphrase)</li>
+            <li>O.D.S. Code (could be called Organisation Code or Practice I.D.)</li>
+            <li>Account I.D.</li>
+          </ul>
+        </li>
+        <li>When you have all 3 details, use your NHS login to access the <strong>NHS App</strong>. You can use the 3 registration details to prove who you are instead of sending a photo of your I.D.</li>
+      </ol>
+
+      <div class="or">
+        <span>Or</span>
+      </div>
+
+      <p>You can <a href="service-access-what-you-need">send a photo of your I.D. to prove who you are</a>.</p>
+
+	</div>
+</div>
+
+{% endblock %}

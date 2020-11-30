@@ -1,8 +1,7 @@
-
 {% extends 'layouts/layout.html' %}
 
 {% block pageTitle %}
-	Record a short video
+Upload a photo of your passport
 {% endblock %}
 
 {% block content %}
@@ -10,8 +9,25 @@
 <div class="nhsuk-grid-row">
 	<div class="nhsuk-grid-column-two-thirds nhsuk-u-margin-bottom-4">
 
-		<h1 class="nhsuk-heading-l">This page doesn't exist yet</h1>
-		<a href="javascript:history.back()">&laquo; Go back</a>
+		{{ backLink({
+			"href": "service-access-photo-id-type",
+			"text": "Back to: Choose the photo I.D. you want to use"
+		  }) }}
+
+		<h1 class="nhsuk-heading-l">Upload a photo of your {{ data['idType'] or 'passport' }}</h1>
+
+		<p>We need a clear photo of the page in your passport that has your name and face on it.</p>
+		<p>Make sure:</p>
+		<ul>
+			<li>your photo is of the whole page</li>
+			<li>you can see all words, numbers and codes</li>
+			<li>there is no reflection or shine from a bright light</li>
+			<li>the text is not blurred</li>
+		</ul>
+
+		<form>
+			<input type="file" id="photo-id-document-any" accept="image/*" class="nhsuk-button" />
+		</form>
 
 	</div>
 </div>

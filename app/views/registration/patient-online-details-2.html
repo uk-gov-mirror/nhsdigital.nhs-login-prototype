@@ -1,7 +1,7 @@
 {% extends 'layouts/layout.html' %}
 
 {% block pageTitle %}
-Do you have the following 3 registration details for the online services you use?
+Do you have registration details?
 {% endblock %}
 
 {% block content %}
@@ -11,7 +11,7 @@ Do you have the following 3 registration details for the online services you use
 
     {{ backLink({
       "href": "patient-online-details",
-      "text": "Back to: Prove who you are without sending a photo of your I.D."
+      "text": "Back to: Do you use your GP surgery's online services?"
     }) }}
 
     <form method="POST" action="pol-choice-2">
@@ -25,7 +25,7 @@ Do you have the following 3 registration details for the online services you use
             </h1>
           </legend>
 
-          <div class="nhsuk-hint">
+          <div class="nhsuk-hint nhsuk-u-margin-top-2">
             <ul>
               <li>Linkage Key (could be called Passphrase)</li>
               <li>O.D.S. Code (could be called Organisation Code or Practice I.D.)</li>

@@ -80,8 +80,10 @@ router.post('/registration/pol-choice-1', function (req, res) {
 
   if (pol_choice_1 == "yes") {
     res.redirect('patient-online-details-2')
+  } if (pol_choice_1 == "no") {
+    res.redirect('patient-online-register')
   } else {
-    res.redirect('')
+    res.redirect('patient-online-ask')
   }
 })
 
@@ -97,7 +99,7 @@ router.post('/registration/pol-choice-2', function (req, res) {
   if (pol_choice_2 == "yes") {
     res.redirect('patient-online-linkage-key')
   } else {
-    res.redirect('')
+    res.redirect('patient-online-get-details')
   }
 })
 
